@@ -18,8 +18,8 @@ const App = () => {
 
       <Content>
         <Router>
-          <Home path="/" />
-          <Login path="/login" />
+          <Home path="/"
+          /><Login path="/login" />
         </Router>
       </Content>
 
