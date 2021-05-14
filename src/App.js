@@ -1,12 +1,9 @@
 import React from "react";
 import { Router } from "@reach/router";
-import { Layout } from 'antd';
+import { Layout } from "antd";
 
 import Navbar from "./components/navbar/Navbar";
-import {
-  Home,
-  Login,
-} from "./pages";
+import { Home, Login } from "./pages";
 import Footer from "./components/footer/Footer";
 
 const { Content } = Layout;
@@ -18,8 +15,8 @@ const App = () => {
 
       <Content>
         <Router>
-          <Home path="/"
-          /><Login path="/login" />
+          <Home path="/" />
+          <Login path="/login" />
         </Router>
       </Content>
 

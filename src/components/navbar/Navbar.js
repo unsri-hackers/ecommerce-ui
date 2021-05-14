@@ -1,20 +1,23 @@
 import React, { useMemo } from "react";
 import { Link } from "@reach/router";
-import { Layout, Menu } from 'antd';
+import { Layout, Menu } from "antd";
 
 const { Header } = Layout;
 
 const Navbar = () => {
-  const menuItems = useMemo(() => [
-    {
-      label: "Home",
-      link: "/",
-    },
-    {
-      label: "Login",
-      link: "/login",
-    },
-  ], []);
+  const menuItems = useMemo(
+    () => [
+      {
+        label: "Home",
+        link: "/",
+      },
+      {
+        label: "Login",
+        link: "/login",
+      },
+    ],
+    []
+  );
 
   return (
     <Header>
