@@ -3,16 +3,6 @@
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 [![Netlify Status](https://api.netlify.com/api/v1/badges/54169673-d0bb-4311-857e-bdb5d9a18c4c/deploy-status)](https://app.netlify.com/sites/devoux/deploys)
 
-## Table of contents
-
-- [Getting Started](#getting-started) :rocket:
-  - [Installation](#installation) :computer:
-  - [Usage](#usage) :gear:
-    - [Serving the app](#serving-the-app) :woman_cook:
-    - [Running the tests](#running-the-tests) :scientist:
-    - [Building a distribution version](#building-a-distribution-version) :building_construction:
-    - [Run Storybook](#run-Storybook) :book:
-
 ## Getting Started :rocket:
 
 ### Installation :computer:
