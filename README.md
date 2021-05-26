@@ -5,15 +5,15 @@
 
 ## Table of contents
 
-- [Getting Started](#Getting-Started) :rocket:
-  - [Installation](#Installation) :computer:
-  - [Usage](#Usage) :gear:
-    - [Serving the app](#Serving-the-app) :woman_cook:
-    - [Running the tests](#Running-the-tests) :scientist:
-    - [Building a distribution version](#Building-a-distribution-version) :building_construction:
-    - [Run Storybook](Run-Storybook) :book:
+- [Getting Started](#getting-started) :rocket:
+  - [Installation](#installation) :computer:
+  - [Usage](#usage) :gear:
+    - [Serving the app](#serving-the-app) :woman_cook:
+    - [Running the tests](#running-the-tests) :scientist:
+    - [Building a distribution version](#building-a-distribution-version) :building_construction:
+    - [Run Storybook](#run-Storybook) :book:
 
-## QuickStart :rocket:
+## Getting Started :rocket:
 
 ### Installation :computer:
 
@@ -57,3 +57,5 @@ $ yarn build
 ```
 $ yarn storybook
 ```
+
+Open [http://localhost:6006](http://localhost:6006) to view it in the browser.
