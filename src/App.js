@@ -2,16 +2,16 @@ import React from "react";
 import { Router } from "@reach/router";
 import { Layout } from "antd";
 
-import Navbar from "./components/navbar/Navbar";
-import { Home, Login } from "./pages";
+import Header from "./components/header/Header";
 import Footer from "./components/footer/Footer";
+import { Home, Login } from "./pages";
 
 const { Content } = Layout;
 
 const App = () => {
   return (
-    <Layout>
-      <Navbar />
+    <>
+      <Header />
 
       <Content>
         <Router>
@@ -21,7 +21,7 @@ const App = () => {
       </Content>
 
       <Footer />
-    </Layout>
+    </>
   );
 };
 
