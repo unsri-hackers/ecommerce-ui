@@ -1,3 +1,67 @@
 #header {
-  background-color: #ffffff !important;
+  background-color: #FFFFFF !important;
+  height: 79px;
+  border-bottom: 1px solid rgb(212, 212, 212);
+}
+
+#logo img{
+  margin: 25px 47.09px 25px 0;
+}
+
+#search{
+  border-radius: 8px 0 0 8px;
+  height: 45px;
+}
+
+.ant-input-group-addon{
+  border-radius: 0 8px 8px 0 !important;
+}
+
+.ant-btn{
+  border-radius: 0 8px 8px 0 !important;
+  height: 45px !important;
+  width: 45px !important;
+  background-color: #E0E0E0 !important;
+}
+
+.ant-input-group-wrapper{
+  border-radius: 8px !important;
+  box-shadow: 0px 4px 3px #00000027;
+}
+
+.icon #product{
+  margin: 0 33.14px 0 60px;
+}
+
+#notif{
+  background-color: #FDE54E;
+  width: 12px;
+  height: 12px;
+  border-radius: 90px;
+  position: absolute;
+  top: -10px;
+  left: 147px;
+
+}
+
+.icon #product{
+  margin-right: 45.14px; 
+}
+
+.profile{
+  display: flex;
+}
+
+#avatar{
+  margin: 15px 0;
+}
+
+.profile p{
+  margin: auto 16px;
+}
+
+#line{
+  border-left: 1px solid #E5E5E5;
+  width: 0px;
+  height: 48px;
 }
