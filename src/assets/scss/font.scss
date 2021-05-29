@@ -1,28 +1,31 @@
 @font-face {
   font-family: "LouisGoergeCafe";
-  src: url("../font/Louis-George-Cafe-Italic.ttf");
+  src: url("../font/Louis-George-Cafe/Louis-George-Cafe-Italic.ttf");
   font-weight: 400;
   font-style: italic, oblique;
 }
+
 @font-face {
   font-family: "LouisGoergeCafe";
-  src: url("../font/Louis-George-Cafe-Light.ttf");
+  src: url("../font/Louis-George-Cafe/Louis-George-Cafe-Light.ttf");
   font-weight: 300;
   font-style: normal;
 }
 
 @font-face {
   font-family: "LouisGoergeCafe";
-  src: url("../font/Louis-George-Cafe-Bold.ttf");
+  src: url("../font/Louis-George-Cafe/Louis-George-Cafe-Bold.ttf");
   font-weight: bold;
   font-style: normal;
 }
+
 @font-face {
   font-family: "LouisGoergeCafe";
-  src: url("../font/Louis-George-Cafe.ttf");
+  src: url("../font/Louis-George-Cafe/Louis-George-Cafe.ttf");
   font-weight: 400;
   font-style: normal;
 }
+
 *,
 *::before,
 ::after {
