@@ -1,6 +1,6 @@
 import React from "react";
-import { Col, Input, Row } from "antd";
-import Logo from "./Logo";
+import { Col, Row } from "antd";
+import Logo from "../header/Logo";
 
 import "./Footer.scss"
 
@@ -10,13 +10,15 @@ const Footer = () => {
       <div className="container">
         <div className="footer-content">
         <Row align="middle">
-          <Col span={6}>
+          <Col xl={{ span: 6}} xs={{ span: 24}} md={{ span: 8 }} sm={{ span: 12}}>
             <div className="footer-col-logo">
-              <Logo />
+              <div className="logo-footer">
+                <Logo />
+              </div>
               <p>Lorem ipsum dolor sit amet Lorem ipsum dolor elit</p>
             </div>
           </Col>
-          <Col span={6}>
+          <Col xl={{ span: 6}} xs={{ span: 24}} md={{ span: 8 }} sm={{ span: 12}}>
             <div className="footer-col">
               <h4 className="title">Lorem, ipsum</h4>
               <ul>
@@ -25,17 +27,17 @@ const Footer = () => {
                 <li>Payments</li>
               </ul></div>
           </Col>
-          <Col span={6}>
+          <Col xl={{ span: 6}} xs={{ span: 24}} md={{ span: 8 }} sm={{ span: 12}}>
             <div className="footer-col">
               <h4 className="title">Explore Us</h4>
               <ul>
                 <li>About</li>
                 <li>Privacy Policy</li>
-                <li>Terms & Conditions.</li>
+                <li>Terms &amp; Conditions.</li>
               </ul>
             </div>
           </Col>
-          <Col span={6}>
+          <Col xl={{ span: 6}} xs={{ span: 24}} md={{ span: 8 }} sm={{ span: 12}}>
             <div className="footer-col">
               <h4 className="title">Get in Touch</h4>
               <ul>
