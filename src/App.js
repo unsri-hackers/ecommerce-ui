@@ -11,7 +11,7 @@ const { Content } = Layout;
 const App = () => {
   return (
     <>
-      <Header />
+      {/* <Header /> */}
 
       <Content>
         <Router>
@@ -20,7 +20,7 @@ const App = () => {
         </Router>
       </Content>
 
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 };
