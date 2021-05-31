@@ -4,10 +4,6 @@
   border-bottom: 1px solid rgb(212, 212, 212);
 }
 
-#logo img{
-  margin: 25px 47.09px 25px 0;
-}
-
 #search{
   border-radius: 8px 0 0 8px;
   height: 45px;
@@ -29,8 +25,8 @@
   box-shadow: 0px 4px 3px #00000027;
 }
 
-.icon #product{
-  margin: 0 33.14px 0 60px;
+.icon #addNewProduct{
+  margin: 0 33.14px;
 }
 
 #notif{
@@ -44,7 +40,7 @@
 
 }
 
-.icon #product{
+.icon #addNewProduct{
   margin-right: 45.14px; 
 }
 
@@ -64,4 +60,16 @@
   border-left: 1px solid #E5E5E5;
   width: 0px;
   height: 48px;
+}
+
+@media screen and (max-width: 600px) {
+  .profile p{
+    display: none;
+  }
+}
+
+@media screen and (max-width: 470px) {
+  .icon #addNewProduct{
+    margin: 0 10px;
+  }
 }
