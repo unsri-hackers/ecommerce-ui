@@ -4,7 +4,6 @@ import Logo from "../header/Logo";
 
 import "./Footer.scss"
 
-
 const Footer = () => {
   return (
     <footer id="footer">
