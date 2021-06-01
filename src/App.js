@@ -2,8 +2,8 @@ import React from "react";
 import { Router } from "@reach/router";
 import { Layout } from "antd";
 
-import Header from "./components/header/Header";
-import Footer from "./components/footer/Footer";
+// import Header from "./components/header/Header";
+// import Footer from "./components/footer/Footer";
 import { Home, Login } from "./pages";
 
 const { Content } = Layout;
