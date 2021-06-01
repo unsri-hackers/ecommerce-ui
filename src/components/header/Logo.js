@@ -3,7 +3,7 @@ import deuvoxLogo from "../../assets/img/deuvox-logo-black.png";
 
 const Logo = () => {
   return (
-    <div>
+    <div id="logo">
       <img alt="deuvox-logo" src={deuvoxLogo} />
     </div>
   );
