@@ -1,26 +1,19 @@
 import React from "react";
-import { Router } from "@reach/router";
-import { Layout } from "antd";
-
-import Header from "./components/header/Header";
-import Footer from "./components/footer/Footer";
 import { Home, Login } from "./pages";
-
-const { Content } = Layout;
+import { BrowserRouter, Route, Switch } from "react-router-dom";
+import Layout from "./components/layout/Layout";
 
 const App = () => {
   return (
     <>
-      <Header />
-
-      <Content>
-        <Router>
-          <Home path="/" />
-          <Login path="/login" />
-        </Router>
-      </Content>
-
-      <Footer />
+      <BrowserRouter>
+        <Switch>
+          <Route path="/login" component={Login} />
+          <Layout>
+            <Route path="/" component={Home} />
+          </Layout>
+        </Switch>
+      </BrowserRouter>
     </>
   );
 };
