@@ -1,11 +1,9 @@
 import React from "react";
-import { Col, Input, Row } from "antd";
+import { Avatar, Badge, Col, Input, Row } from "antd";
 import Logo from "./Logo";
 import notificationIcon from "../../assets/img/notificationIcon.png";
 import addNewProduct from "../../assets/img/add-new-product.png";
-import { Avatar } from 'antd';
 import { UserOutlined } from '@ant-design/icons';
-import { Badge } from 'antd';
 
 import "./Header.scss";
 
@@ -17,17 +15,17 @@ const Header = () => {
       <div className="container">
         <Row align="middle">
 
-          <Col xs={9} sm={7} md={4} lg={4}>
+          <Col xs={0} sm={0} md={4} lg={4}>
             <Logo />
           </Col>
 
-          <Col xs={0} sm={0} md={6} lg={9}>
+          <Col xs={9} sm={7} md={6} lg={9}>
             <Search id="search"
               placeholder="Search for good things ..."
             />
           </Col>
 
-          <Col xs={8} sm={7} md={6} lg={5}>
+          <Col xs={9} sm={7} md={5} lg={4}>
             <div className="icon">
               <Badge>
                 <img alt="add-new-product" src={addNewProduct} id="addNewProduct" />
@@ -42,7 +40,7 @@ const Header = () => {
             <div id="line"></div>
           </Col>
 
-          <Col xs={6} sm={9} md={7} lg={5}>
+          <Col xs={5} sm={9} md={8} lg={6}>
             <div className="profile">
               <Avatar size={48} icon={<UserOutlined />} id="avatar" />
               <p>Fadel Muhammad</p>
