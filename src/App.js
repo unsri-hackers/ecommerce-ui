@@ -4,6 +4,7 @@ import { Layout } from "antd";
 
 import Header from "./components/header/Header";
 import Footer from "./components/footer/Footer";
+import StartedPage from "./components/startedPage/StartedPage";
 import { Home, Login } from "./pages";
 
 const { Content } = Layout;
@@ -14,10 +15,11 @@ const App = () => {
       <Header />
 
       <Content>
-        <Router>
+      <StartedPage />
+        {/* <Router>
           <Home path="/" />
           <Login path="/login" />
-        </Router>
+        </Router> */}
       </Content>
 
       <Footer />
