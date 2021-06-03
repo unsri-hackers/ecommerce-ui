@@ -1,27 +1,16 @@
 import React from "react";
-import { Router } from "@reach/router";
-import { Layout } from "antd";
-
-import Header from "./components/header/Header";
-import Footer from "./components/footer/Footer";
 import { Home, Login } from "./pages";
-
-const { Content } = Layout;
+import Layout from "./components/layout/Layout";
+import { Router } from "@reach/router";
 
 const App = () => {
   return (
-    <>
-      <Header />
-
-      <Content>
-        <Router>
-          <Home path="/" />
-          <Login path="/login" />
-        </Router>
-      </Content>
-
-      <Footer />
-    </>
+    <Router>
+      <Login path="/login" />
+      <Layout path="/">
+        <Home path="/" />
+      </Layout>
+    </Router>
   );
 };
 
