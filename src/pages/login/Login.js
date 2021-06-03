@@ -4,7 +4,7 @@ import HeroMobile from "../../assets/img/login-hero-mobile.png";
 import HeroDesktop from "../../assets/img/login-hero-desktop.png";
 import { Typography } from "antd";
 import Logo from "../../components/header/Logo";
-import LoginForm from "../../components/loginForm/LoginForm";
+import LoginForm from "./components/form/LoginForm";
 import "./login.less";
 
 const { Title, Paragraph } = Typography;

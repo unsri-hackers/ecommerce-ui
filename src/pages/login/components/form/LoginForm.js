@@ -1,6 +1,6 @@
 import React from "react";
 import { Form, Input, Button, Divider } from "antd";
-import GoogleIcon from "../../assets/img/google-icon.png";
+import GoogleIcon from "../../../../assets/img/google-icon.png";
 import { Typography } from "antd";
 import "./login-form.less";
 
