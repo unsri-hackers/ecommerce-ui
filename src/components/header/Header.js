@@ -3,9 +3,9 @@ import { Avatar, Badge, Col, Input, Row } from "antd";
 import Logo from "./Logo";
 import notificationIcon from "../../assets/img/notificationIcon.png";
 import addNewProduct from "../../assets/img/add-new-product.png";
-import { UserOutlined } from '@ant-design/icons';
+import { UserOutlined } from "@ant-design/icons";
 
-import "./Header.scss";
+import "./Header.less";
 
 const { Search } = Input;
 
@@ -14,24 +14,29 @@ const Header = () => {
     <header id="header">
       <div className="container">
         <Row align="middle">
-
           <Col xs={0} sm={0} md={4} lg={4}>
             <Logo />
           </Col>
 
           <Col xs={9} sm={7} md={6} lg={9}>
-            <Search id="search"
-              placeholder="Search for good things ..."
-            />
+            <Search id="search" placeholder="Search for good things ..." />
           </Col>
 
           <Col xs={9} sm={7} md={5} lg={4}>
             <div className="icon">
               <Badge>
-                <img alt="add-new-product" src={addNewProduct} id="addNewProduct" />
+                <img
+                  alt="add-new-product"
+                  src={addNewProduct}
+                  id="addNewProduct"
+                />
               </Badge>
               <Badge count={0} showZero color="yellow">
-                <img alt="notificationIcon" src={notificationIcon} id="notificationIcon" />
+                <img
+                  alt="notificationIcon"
+                  src={notificationIcon}
+                  id="notificationIcon"
+                />
               </Badge>
             </div>
           </Col>
@@ -46,7 +51,6 @@ const Header = () => {
               <p>Fadel Muhammad</p>
             </div>
           </Col>
-
         </Row>
       </div>
     </header>
