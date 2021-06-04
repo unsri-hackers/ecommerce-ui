@@ -1,15 +1,19 @@
 import React from "react";
+import { Router } from "@reach/router";
 import { Home, Login } from "./pages";
 import Layout from "./components/layout/Layout";
-import { Router } from "@reach/router";
+
+const PrivateRoute = ({ render, ...props }) => {
+  // TODO: Authentication logic goes here.
+  return render(props);
+};
 
 const App = () => {
   return (
     <Router>
       <Login path="/login" />
-      <Layout path="/">
-        <Home path="/" />
-      </Layout>
+
+      <PrivateRoute path="/" render={Layout(Home)} />
     </Router>
   );
 };
