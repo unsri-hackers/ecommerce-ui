@@ -14,7 +14,7 @@ module.exports = {
               "@btn-primary-color": "#323232",
               "@text-color": "#323232",
               "@text-color-secondary": "#8893A9",
-              "@font-family": "LouisGoergeCafe",
+              "@font-family": "LouisGeorgeCafe",
               "@screen-md": "768px",
             },
             javascriptEnabled: true,
