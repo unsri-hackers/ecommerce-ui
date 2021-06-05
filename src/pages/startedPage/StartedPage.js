@@ -3,7 +3,7 @@ import 'antd/dist/antd.css';
 import { Col, Row, Button } from "antd";
 import ilustrationOnlineShopping from "../../assets/img/illustration-online-shopping.png";
 
-import "./startedPage.scss";
+import "./startedPage.less";
 
 const StartedPage = () => {
     return (
@@ -21,7 +21,7 @@ const StartedPage = () => {
                 </Col>
             </Row>
         </div>
-    )
-}
+    );
+};
 
 export default StartedPage;
