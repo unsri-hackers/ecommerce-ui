@@ -1,5 +1,6 @@
-import useRequest from "@ahooksjs/use-request";
 import React, { useEffect, useState } from "react";
+import { useApi } from "../../hooks/useApi";
+import mocks from "../../mocks";
 
 const Dummy = () => {
   const [name, setName] = useState("arief");
@@ -8,11 +9,9 @@ const Dummy = () => {
   const {
     data: product1,
     run: getProduct1
-  } = useRequest("https://deuvox.mocklab.io/api/v1/products/1", {
-    manual: true,
-  });
+  } = useApi("https://deuvox.mocklab.io/api/v1/products/1", { mock: mocks.product });
 
-  const { data: products } = useRequest("https://deuvox.mocklab.io/api/v1/products");
+  const { data: products } = useApi("https://deuvox.mocklab.io/api/v1/products", { mock: mocks.productList });
 
   const buttonOnClick = () => {
     setName("faisal");
