@@ -6,12 +6,22 @@ import { Typography } from "antd";
 import Logo from "../../components/header/Logo";
 import LoginForm from "./components/form/LoginForm";
 import "./login.less";
+import { Helmet } from "react-helmet";
 
 const { Title, Paragraph } = Typography;
 
 const Login = () => {
   return (
     <Row className="login" justify="center">
+      <Helmet>
+        <title>Login | Deuvox</title>
+        <meta name="title" content="Login | Deuvox" />
+        <meta
+          name="description"
+          content="Join us for shopping with pleasant experience"
+        />
+        <meta charSet="utf-8" />
+      </Helmet>
       <Col xs={0} md={3}></Col>
       <Col
         xs={24}
