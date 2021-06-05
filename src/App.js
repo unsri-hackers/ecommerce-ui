@@ -1,29 +1,22 @@
 import React from "react";
 import { Router } from "@reach/router";
-import { Layout } from "antd";
+import { Dummy, Home, Login } from "./pages";
+import Layout from "./components/layout/Layout";
 
-import Header from "./components/header/Header";
-import Footer from "./components/footer/Footer";
-import StartedPage from "./components/startedPage/StartedPage";
-import { Home, Login } from "./pages";
-
-const { Content } = Layout;
+const PrivateRoute = ({ render, ...props }) => {
+  // TODO: Authentication logic goes here.
+  return render(props);
+};
 
 const App = () => {
   return (
-    <>
-      <Header />
+    <Router>
+      <Login path="/login" />
 
-      <Content>
-      <StartedPage />
-        {/* <Router>
-          <Home path="/" />
-          <Login path="/login" />
-        </Router> */}
-      </Content>
+      <Dummy path="/-/dummy" />
 
-      <Footer />
-    </>
+      <PrivateRoute path="/" render={Layout(Home)} />
+    </Router>
   );
 };
 

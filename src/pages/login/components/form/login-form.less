@@ -1,0 +1,104 @@
+.login-form {
+  padding: 0 75px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .submit-button {
+    margin-top: 12px;
+    display: flex;
+    justify-content: center;
+
+    button {
+      width: 155px;
+      font-weight: bold;
+    }
+  }
+
+  .ant-input,
+  .ant-input-password {
+    border-radius: 5px;
+  }
+
+  .ant-form-item {
+    margin-bottom: 12px;
+  }
+
+  .ant-form-item-with-help {
+    margin-bottom: 0;
+  }
+
+  .ant-form-item-label {
+    padding: 0;
+    font-size: 13px;
+    font-weight: bold;
+  }
+
+  .ant-form-item-explain {
+    font-size: 10px;
+    min-height: 12px;
+  }
+
+  .login-devider {
+    border-top: 1px solid #b5b5b5;
+    padding: 0 2em;
+  }
+
+  .ant-divider-horizontal {
+    margin: 18px 0;
+  }
+
+  .login-google {
+    min-width: 155px;
+    font-size: 12px;
+    font-weight: bold;
+
+    img {
+      margin-right: 7px;
+    }
+  }
+
+  .text-forgot-password {
+    margin-top: 20px;
+    color: @text-color;
+
+    &:hover {
+      color: @primary-color;
+    }
+  }
+
+  .text-register {
+    margin: 14px 0;
+  }
+}
+
+@media (min-width: @screen-md) {
+  .login-form {
+    border-radius: 20px;
+
+    .ant-form-item-label {
+      width: 100%;
+      text-align: left;
+
+      label {
+        &::after {
+          content: "";
+        }
+      }
+    }
+    .ant-divider-horizontal {
+      margin: 10px 0;
+    }
+    .text-forgot-password {
+      margin-top: 10px;
+
+      &:hover {
+        color: @primary-color;
+      }
+    }
+
+    .text-register {
+      margin-top: 7px;
+    }
+  }
+}
