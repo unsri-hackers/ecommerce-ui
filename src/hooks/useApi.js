@@ -19,6 +19,6 @@ export const useApi = (
     ...params,
     requestMethod: config.useMockData
       ? () => mockData(params.mock).then(response => response.json())
-      : null,
+      : null, // Use default fetch method.
   });
 };
