@@ -14,8 +14,7 @@ const Login = () => {
   return (
     <Row className="login" justify="center">
       <Helmet>
-        <title>Login | Deuvox</title>
-        <meta name="title" content="Login | Deuvox" />
+        <title>Login</title>
         <meta
           name="description"
           content="Join us for shopping with pleasant experience"
