@@ -2,14 +2,32 @@ import React from "react";
 import { Form, Input, Button, Divider } from "antd";
 import GoogleIcon from "../../../../assets/img/google-icon.png";
 import { Typography } from "antd";
+import { useApi } from "../../../../hooks/useApi";
 import "./login-form.less";
-
 const { Text, Link } = Typography;
 
 const LoginForm = () => {
   const [form] = Form.useForm();
+  const { run, loading } = useApi(
+    {
+      url: "https://deuvox-dev-1.herokuapp.com/api/v1/login",
+      method: "post",
+      body: JSON.stringify({
+        username: form.getFieldValue("email"),
+        password: form.getFieldValue("password"),
+      }),
+    },
+    {
+      manual: true,
+      onSuccess: (res) => {
+        console.log(res);
+      },
+    }
+  );
+
   const onFinish = (values) => {
     console.log(values);
+    run();
   };
   return (
     <div className="login-form">
@@ -48,7 +66,12 @@ const LoginForm = () => {
 
         <Form.Item>
           <div className="submit-button">
-            <Button type="primary" htmlType="submit" shape="round">
+            <Button
+              type="primary"
+              htmlType="submit"
+              shape="round"
+              loading={loading}
+            >
               Login
             </Button>
           </div>
