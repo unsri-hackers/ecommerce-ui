@@ -1,65 +1,68 @@
-.startedPage{
+.startedPage {
     display: flex;
     justify-content: center;
     margin: 0 50px 80px 50px;
-}
 
-.description{
-    margin-right: 300px;
-    h1{
-        font-weight: bold;
-        font-size: 45px;
-        margin-bottom: 16px;
-        line-height: 52.73px;
+    .description {
+
+        h1 {
+            font-weight: bold;
+            font-size: 45px;
+            margin-bottom: 16px;
+            line-height: 52.73px;
+        }
+
+        p {
+            font-size: 20px;
+            margin-bottom: 32px;
+            line-height: 23.44px;
+            font-weight: 300;
+        }
     }
-    p{
-        font-size: 20px;
-        margin-bottom: 32px;
-        line-height: 23.44px;
+
+    #button {
+        background: #FDE54E !important;
+        color: black;
+        width: 210px !important;
+        height: 50px !important;
+        border-radius: 50px !important;
+        font-size: 18px;
+        box-shadow: 0px 3px 10px 0.01px rgba(0, 0, 0, 0.548);
+        border: 0;
     }
-}
 
-#button{
-    background: #FDE54E !important;
-    color: black;
-    width: 210px !important;
-    height: 50px !important;
-    border-radius: 50px !important;
-    font-size: 18px;
-    box-shadow: 0px 3px 10px 0.01px rgba(0, 0, 0, 0.548);
-    border: 0;
-}
+    #button:hover {
+        background: #e6d466 !important;
+    }
 
-#button:hover{
-    background: #e6d466 !important;
-}
+    #button:active {
+        background: #b1a44e !important;
+    }
 
-#button:active{
-    background: #b1a44e !important;
-}
-
-#image-ilustration{
-    margin-right: 50px;
+    #image-ilustration {
+        margin-right: 50px;
+    }
 }
 
 @media screen and (max-width: 1380px) {
-    .description{
+    .description {
         margin-right: 100px;
     }
 }
 
 @media screen and (max-width: 1050px) {
-    .description{
+    .description {
         margin-right: 0px;
     }
 }
 
-@media screen and (max-width: 590px) {
-    .startedPage{
+@media screen and (max-width: 767px) {
+    .startedPage {
         display: block;
-        margin: 20px 20px;
+        margin: 20px;
     }
-    #image-ilustration{
+
+    #image-ilustration {
         height: auto;
         width: 100%;
     }
