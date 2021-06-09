@@ -1,0 +1,105 @@
+.product-card{
+  .ant-card-hoverable {
+    border-radius: 10px;
+    
+    .ant-card-meta-detail {
+      margin-left: -20px;
+      color: #323232;
+    }
+    .ant-card-cover img {
+      border-radius: 10px;
+    }
+  }
+  .see-more-text{
+    font-size: 18px;
+    letter-spacing: -0.015em;
+    margin: 10px 0 10px 0;
+    float: right;
+    color: #323232;
+  }
+  .rate{
+    color: #FFFFFF;
+    top: 0px;
+    font-size: 18px;
+    line-height: 21px;
+    letter-spacing: -0.015em;
+    position: absolute;
+    background: rgba(50, 50, 50, 0.42);
+    border-radius: 10px 0px;
+    padding: 10px;
+    
+    .text{
+      position: relative;
+      margin: -21px 12px 0px 39px;
+    }
+  }
+  .ant-rate-star-full{
+    margin-left: 12px;
+  }
+  .ant-rate-star-zero{
+    display: none;
+  }
+  @media only screen and (min-width: 1200px) {
+    .title-product-card{
+      margin:10px 0 10px 0;
+      font-size: 24px;
+      color: #323232;
+      line-height: 28px;
+    }
+    .ant-col-xl-6 {
+      margin-bottom: 25px;
+    }
+    .ant-card,
+    .ant-card-hoverable{
+      width: 260px;
+    }
+  }
+  @media only screen and (max-width: 480px) {
+    .title-product-card{
+      margin:10px 0 10px 0;
+      font-size: 16px;
+      line-height: 19px;
+      letter-spacing: -0.015em;
+    }
+    .ant-card-meta-detail {
+      margin: -10px 0px -8px -20px;
+      font-size: 12px;
+      line-height: 14px;
+      letter-spacing: -0.015em;
+    }  
+    .ant-btn{
+      display: none;
+    }
+    .rate{
+      color: #FFFFFF;
+      top: 0px;
+      font-size: 10px;
+      background: rgba(50, 50, 50, 0.42);
+      border-radius: 10px 0px;
+      padding: 0px;
+      
+      .text{
+        position: relative;
+        margin: -25px 8px 0px 29px;
+      }
+      svg{
+        width: 12px;
+        margin-top: -5px;
+      }
+    }
+  }
+  @media only screen and (min-width: 481px) and(max-width: 1150px) {
+    .title-product-card{
+      margin:10px 0 10px 0;
+      font-size: 24px;
+      line-height: 28px;
+    }
+    .ant-card, 
+    .ant-card-hoverable{
+      width: 260px;
+    }
+    .ant-btn{
+      display: none;
+    }
+  }
+}

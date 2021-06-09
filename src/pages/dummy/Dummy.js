@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useApi } from "../../hooks/useApi";
 import mocks from "../../mocks";
+import ProductCard from "../../components/product-card/ProductCard";
 
 const Dummy = () => {
   const [name, setName] = useState("arief");
@@ -38,6 +39,8 @@ const Dummy = () => {
         {name} - {status}
       </p>
       <button onClick={() => buttonOnClick()}>click me</button>
+      
+      <ProductCard />
     </>
   );
 };
