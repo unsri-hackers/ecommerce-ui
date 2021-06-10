@@ -9,6 +9,7 @@ const { Meta } = Card;
 
 const ProductCard = () => {
   const { data: products } = useApi("https://deuvox.mocklab.io/api/v1/products", { mock: mocks.productList });
+  console.log(mocks)
   return (
     <div className="product-card">
       <div className="container">
@@ -31,12 +32,12 @@ const ProductCard = () => {
           </Col>
         </Row>
         <Row gutter={[16, 16]}>
-          {mocks.productList && mocks.productList.map(product => (
+          {products && products.map(product => (
             <Col sm={{ span: 12 }} xs={{ span: 8 }} xl={{ span: 6 }}>
               <Card
                 hoverable
                 bordered={false}
-                cover={<img alt="product-image" text="4.9" src={product.img} />}
+                cover={<img alt={product.name} src={product.img} />}
               >
                 <Meta title={product.name} description= {`Rp. ${product.price}` } />
               </Card>
@@ -46,9 +47,6 @@ const ProductCard = () => {
             </Col>
           ))}
         </Row>
-        <div>
-          <h1>Product</h1>
-        </div>
       </div>
     </div>
   );
