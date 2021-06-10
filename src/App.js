@@ -1,6 +1,6 @@
 import React from "react";
 import { Router } from "@reach/router";
-import { Dummy, Home, Login, StartedPage } from "./pages";
+import { Dummy, Home, Login, StartedPage, ProductCategories } from "./pages";
 import Layout from "./components/layout/Layout";
 
 const PrivateRoute = ({ render, ...props }) => {
@@ -14,6 +14,8 @@ const App = () => {
       <Login path="/login" />
 
       <Dummy path="/-/dummy" />
+
+      <PrivateRoute path="/" render={Layout(ProductCategories)} />
 
       <PrivateRoute path="/" render={Layout(StartedPage)} />
 
