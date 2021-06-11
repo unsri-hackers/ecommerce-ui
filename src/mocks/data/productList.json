@@ -1,0 +1,12 @@
+[
+  {
+    "id": 1,
+    "name": "mock-buku",
+    "price": 10000.00
+  },
+  {
+    "id": 2,
+    "name": "mock-baju",
+    "price": 100000.00
+  }
+]
