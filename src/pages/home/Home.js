@@ -1,9 +1,14 @@
 import { Alert, Button } from "antd";
 import React from "react";
+import { Helmet } from "react-helmet";
 
 const Home = () => {
   return (
     <>
+      <Helmet>
+        <title>Home</title>
+        <meta name="description" content="Deuvox is an ecommerce" />
+      </Helmet>
       <p>Home </p>
       <p style={{ fontWeight: "bold" }}>Home bold </p>
       <p style={{ fontWeight: 300 }}>Home light</p>
