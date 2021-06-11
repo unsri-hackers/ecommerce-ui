@@ -21,8 +21,6 @@ const trackPageView = (location) => {
 
 const App = () => {
   return (
-    <Router> 
-      <Login path="/login" />
 
     <LocationProvider>
       <Helmet defaultTitle="Deuvox" titleTemplate="%s | Deuvox">
