@@ -1,13 +1,13 @@
 import React from "react";
-import { Row, Col, Card, Button, Rate } from "antd";
+import { Row, Col, Button, Rate } from "antd";
 import { RightOutlined } from "@ant-design/icons";
 import { useApi } from "../../hooks/useApi";
 import mocks from "../../mocks";
 import "./ProductCard.less"
-const { Meta } = Card;
+import ProductCard from "./component/ProductCard";
 
 
-const ProductCard = () => {
+const Product = () => {
   const { data: products } = useApi("https://deuvox.mocklab.io/api/v1/products", { mock: mocks.productList });
   return (
     <div className="product-card">
@@ -27,23 +27,13 @@ const ProductCard = () => {
               See More
               <RightOutlined />
             </Button>
-
           </Col>
         </Row>
         <Row gutter={[16, 16]}>
           {products && products.map(product => (
-            <Col sm={{ span: 12 }} xs={{ span: 8 }} xl={{ span: 6 }}>
+            <Col key={product.id} sm={{ span: 12 }} xs={{ span: 8 }} xl={{ span: 6 }}>
               <a href={product.link}>
-                <Card
-                  hoverable
-                  bordered={false}
-                  cover={<img alt={product.name} src={product.img} />}
-                >
-                  <Meta title={product.name} description={`Rp. ${product.price}`} />
-                </Card>
-                <div className="rate">
-                  <Rate disabled defaultValue={1} /> <div className="text">4.9</div>
-                </div>
+                <ProductCard data={product}/>
               </a>
             </Col>
           ))}
@@ -52,4 +42,4 @@ const ProductCard = () => {
     </div>
   );
 };
-export default ProductCard;
+export default Product;
