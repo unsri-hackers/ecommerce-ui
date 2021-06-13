@@ -1,5 +1,5 @@
 import React from "react";
-import { Row, Col, Button, Rate } from "antd";
+import { Row, Col, Button } from "antd";
 import { RightOutlined } from "@ant-design/icons";
 import { useApi } from "../../hooks/useApi";
 import mocks from "../../mocks";

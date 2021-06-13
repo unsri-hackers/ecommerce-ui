@@ -5,7 +5,7 @@ const { Meta } = Card;
 const ProductCard = (props) => {
   return (
     <>
-      <Card 
+      <Card
         hoverable
         bordered={false}
         cover={<img alt={props.data.name} src={props.data.img} />}
@@ -13,7 +13,8 @@ const ProductCard = (props) => {
         <Meta title={props.data.name} description={`Rp. ${props.data.price}`} />
       </Card>
       <div className="rate">
-        <Rate disabled defaultValue={1} /> <div className="text">4.9</div>
+        <Rate disabled defaultValue={1} />
+        <div className="text">4.9</div>
       </div>
     </>
   )
