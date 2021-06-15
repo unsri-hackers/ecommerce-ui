@@ -2,6 +2,7 @@ import React from "react";
 import { Router } from "@reach/router";
 import { Dummy, Home, Login } from "./pages";
 import Layout from "./components/layout/Layout";
+import { AuthProvider } from "./providers/auth/context";
 
 const PrivateRoute = ({ render, ...props }) => {
   // TODO: Authentication logic goes here.
@@ -10,13 +11,15 @@ const PrivateRoute = ({ render, ...props }) => {
 
 const App = () => {
   return (
-    <Router>
-      <Login path="/login" />
+    <AuthProvider>
+      <Router>
+        <Login path="/login" />
 
-      <Dummy path="/-/dummy" />
+        <Dummy path="/-/dummy" />
 
-      <PrivateRoute path="/" render={Layout(Home)} />
-    </Router>
+        <PrivateRoute path="/" render={Layout(Home)} />
+      </Router>
+    </AuthProvider>
   );
 };
 

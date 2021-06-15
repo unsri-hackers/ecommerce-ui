@@ -4,12 +4,13 @@ import Logo from "./Logo";
 import notificationIcon from "../../assets/img/notificationIcon.png";
 import addNewProduct from "../../assets/img/add-new-product.png";
 import { UserOutlined } from "@ant-design/icons";
-
+import useAuth from "../../providers/auth/context";
 import "./Header.less";
 
 const { Search } = Input;
 
 const Header = () => {
+  const { user } = useAuth();
   return (
     <header id="header">
       <div className="container">
@@ -48,7 +49,7 @@ const Header = () => {
           <Col xs={5} sm={9} md={8} lg={6}>
             <div className="profile">
               <Avatar size={48} icon={<UserOutlined />} id="avatar" />
-              <p>Fadel Muhammad</p>
+              <p>{user ? user.username : "login please"}</p>
             </div>
           </Col>
         </Row>
