@@ -1,6 +1,6 @@
 import React from "react";
 import { Router, Location, LocationProvider } from "@reach/router";
-import { Dummy, Home, Login, StartedPage } from "./pages";
+import { Dummy, Home, Login, StartedPage, ListProduct } from "./pages";
 import Layout from "./components/layout/Layout";
 import ReactGA from "react-ga";
 import { Helmet } from "react-helmet";
@@ -33,6 +33,8 @@ const App = () => {
         <Dummy path="/-/dummy" />
 
         <PrivateRoute path="/" render={Layout(StartedPage)} />
+
+        <PrivateRoute path="/list-product" render={Layout(ListProduct)} />
 
         <PrivateRoute path="/" render={Layout(Home)} />
       </Router>
