@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useMemo } from "react";
 import { Router, Location, LocationProvider } from "@reach/router";
-import { Dummy, Home, Login, StartedPage, ListProduct } from "./pages";
-import Layout from "./components/layout/Layout";
+import { useSize } from "ahooks";
 import ReactGA from "react-ga";
 import { Helmet } from "react-helmet";
+import Layout from "./components/layout/Layout";
+import { Dummy, Home, Login, StartedPage } from "./pages";
+import SiteContext from "./providers/site/SiteContext";
 
 
 const PrivateRoute = ({ render, ...props }) => {
@@ -19,27 +21,36 @@ const trackPageView = (location) => {
   ReactGA.pageview(location.pathname + location.search);
 };
 
+const RESPONSIVE_MOBILE_WIDTH = 768;
+
 const App = () => {
+  const dom = document.querySelector("body");
+  const size = useSize(dom);
+
+  const isMobile = useMemo(
+    () => size.width < RESPONSIVE_MOBILE_WIDTH,
+    [size.width]
+  );
+
   return (
+    <SiteContext.Provider value={{ isMobile }}>
+      <LocationProvider>
+        <Helmet defaultTitle="Deuvox" titleTemplate="%s | Deuvox">
+          <meta name="description" content="Deuvox is the best" />
+          <meta charSet="utf-8" />
+        </Helmet>
+        <Router>
+          <Login path="/login" />
 
-    <LocationProvider>
-      <Helmet defaultTitle="Deuvox" titleTemplate="%s | Deuvox">
-        <meta name="description" content="Deuvox is the best" />
-        <meta charSet="utf-8" />
-      </Helmet>
-      <Router>
-        <Login path="/login" />
+          <Dummy path="/-/dummy" />
 
-        <Dummy path="/-/dummy" />
+          <PrivateRoute path="/" render={Layout(StartedPage)} />
 
-        <PrivateRoute path="/" render={Layout(StartedPage)} />
-
-        <PrivateRoute path="/list-product" render={Layout(ListProduct)} />
-
-        <PrivateRoute path="/" render={Layout(Home)} />
-      </Router>
-      <Location children={(context) => trackPageView(context.location)} />
-    </LocationProvider>
+          <PrivateRoute path="/" render={Layout(Home)} />
+        </Router>
+        <Location children={(context) => trackPageView(context.location)} />
+      </LocationProvider>
+    </SiteContext.Provider>
   );
 };
 
