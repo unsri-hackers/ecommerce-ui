@@ -1,6 +1,6 @@
 .on-going-orders {
 	.ant-card-meta{
-		margin-top: -65px;
+		margin-top: -145px;
 	}
 	.ant-card-body{
 		margin-left: -24px;
@@ -33,6 +33,26 @@
 img:hover {
 	cursor: pointer;
 }
+
+ img{
+  display: grid;
+  grid-template-areas: "img-1 img-2"
+                       "img-1  ."
+                       "img-1  img-3";
+  grid-template-rows: 50px 1fr 30px;
+  grid-template-columns: 150px 1fr;
+}
+
+a > .img-1 {
+  grid-area: auto;
+}
+a > .img-2 {
+  grid-area: auto;
+}
+a > .img-3 {
+  grid-area: auto;
+}
+
 .img-1{
 	width: 175.5px;
 	height: 180px;
@@ -43,18 +63,19 @@ img:hover {
 .img-3{
 	width: 85.5px;
 	height: 85.5px;
-	background: #AFBEE7;
 	position: relative;
 }
 .img-2{
 	border-radius: 0px 10px 0px 0px;
+	background: #AFBEE7;
 	right: -186px;
 	top: -180px;
 }
 .img-3{
 	border-radius: 0px 0px 10px 0px;
-	top: -86px;
-	right: -100px;
+	background: #8DA0D5;
+	top: -171px;
+	right: -186px;
 }
 
 
@@ -75,6 +96,9 @@ img:hover {
 	}
 	.ant-col-xs-8{
 		margin-bottom: -30px;
+	}
+	.ant-card-meta{
+		margin-top: -100px;
 	}
 	.ant-card-meta-detail {
 		margin-top: 35px;
@@ -108,8 +132,8 @@ img:hover {
 		top: -80px;
 	}
 	.img-3{
-		right: -43px;
-		top: -38px;
+		right: -81px;
+		top: -76px;
 	}
 }
 @media only screen and (min-width: 481px) and(max-width: 1150px) {
