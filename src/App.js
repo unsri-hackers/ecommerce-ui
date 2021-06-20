@@ -1,12 +1,12 @@
 import React, { useMemo } from "react";
 import { Router, Location, LocationProvider } from "@reach/router";
-import { Dummy, Home, Login, StartedPage, ProductCategories } from "./pages";
-import Layout from "./components/layout/Layout";
+// import { Dummy, Home, Login, StartedPage, ProductCategories } from "./pages";
+// import Layout from "./components/layout/Layout";
 import { useSize } from "ahooks";
 import ReactGA from "react-ga";
 import { Helmet } from "react-helmet";
 import Layout from "./components/layout/Layout";
-import { Dummy, Home, Login, StartedPage } from "./pages";
+import { Dummy, Home, Login, StartedPage, ProductCategories } from "./pages";
 import SiteContext from "./providers/site/SiteContext";
 
 
@@ -29,9 +29,9 @@ const App = () => {
   const dom = document.querySelector("body");
   const size = useSize(dom);
 
-        <PrivateRoute path="/" render={Layout(ProductCategories)} />
+//         <PrivateRoute path="/" render={Layout(ProductCategories)} />
 
-        <PrivateRoute path="/" render={Layout(StartedPage)} />
+//         <PrivateRoute path="/" render={Layout(StartedPage)} />
 
   const isMobile = useMemo(
     () => size.width < RESPONSIVE_MOBILE_WIDTH,
@@ -49,6 +49,8 @@ const App = () => {
           <Login path="/login" />
 
           <Dummy path="/-/dummy" />
+            
+          <PrivateRoute path="/" render={Layout(ProductCategories)} />
 
           <PrivateRoute path="/" render={Layout(StartedPage)} />
 
