@@ -4,7 +4,7 @@ import { useSize } from "ahooks";
 import ReactGA from "react-ga";
 import { Helmet } from "react-helmet";
 import Layout from "./components/layout/Layout";
-import { Dummy, Home, Login, StartedPage } from "./pages";
+import { Dummy, Home, ListProduct, Login, StartedPage } from "./pages";
 import SiteContext from "./providers/site/SiteContext";
 
 
@@ -45,6 +45,8 @@ const App = () => {
           <Dummy path="/-/dummy" />
 
           <PrivateRoute path="/" render={Layout(StartedPage)} />
+
+          <PrivateRoute path="/products" render={Layout(ListProduct)} />
 
           <PrivateRoute path="/" render={Layout(Home)} />
         </Router>

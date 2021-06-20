@@ -8,7 +8,7 @@ const ListProduct = () => {
     <div className="list-product">
       <Row>
         <Col span={24}>
-          <div className="your-product">
+          <div className="on-going-orders">
             <Product />
           </div>
         </Col>
