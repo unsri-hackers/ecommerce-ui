@@ -49,7 +49,7 @@ const Header = () => {
           <Col xs={5} sm={9} md={8} lg={6}>
             <div className="profile">
               <Avatar size={48} icon={<UserOutlined />} id="avatar" />
-              <p>{user ? user.username : "login please"}</p>
+              <p>{user && user.username}</p>
             </div>
           </Col>
         </Row>

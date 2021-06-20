@@ -9,21 +9,23 @@ import React, {
 } from "react";
 import { useApi } from "../../hooks/useApi";
 import mocks from "../../mocks";
+import { browserName } from "react-device-detect";
 const AuthContext = createContext(null);
 
 export function AuthProvider({ children }) {
   const [reqHeader, setReqHeader] = useState({
-    "Device-id": "deviceid",
+    "Device-id": browserName,
+    "Content-Type": "application/json",
     Authorization: "",
   });
   const [user, setUser] = useState();
-  const [token, setToken] = useLocalStorageState("token", "");
+  const [authToken, setAuthToken] = useLocalStorageState("authToken", "");
 
   useEffect(() => {
     setReqHeader((reqHeader) => {
-      return { ...reqHeader, Authorization: `Bearer ${token}` };
+      return { ...reqHeader, Authorization: `Bearer ${authToken}` };
     });
-  }, [token]);
+  }, [authToken]);
 
   const getCurrentUser = useApi(
     {
@@ -39,7 +41,7 @@ export function AuthProvider({ children }) {
           console.log("succsess");
           console.log(result);
           console.log(params);
-          // setUser({ username: result.vendor.sallerName });
+          setUser({ username: result.vendor.sallerName });
           // navigate("/");
         }
       },
@@ -59,6 +61,12 @@ export function AuthProvider({ children }) {
 
   const login = useApi(
     (values) => {
+      console.log(
+        JSON.stringify({
+          username: values.email,
+          password: values.password,
+        })
+      );
       return {
         url: "https://deuvox-dev-1.herokuapp.com/api/v1/login",
         method: "post",
@@ -66,9 +74,7 @@ export function AuthProvider({ children }) {
           username: values.email,
           password: values.password,
         }),
-        headers: {
-          "Device-id": "deviceid",
-        },
+        headers: reqHeader,
       };
     },
     {
@@ -79,7 +85,7 @@ export function AuthProvider({ children }) {
         console.log(result);
         console.log(params);
         setUser({ username: result.username });
-        setToken(result.accessToken);
+        setAuthToken(result.accessauthToken);
         navigate("/");
       },
       onError: (err, params) => {
@@ -95,10 +101,9 @@ export function AuthProvider({ children }) {
     () => ({
       user,
       login,
-      token,
-      getCurrentUser,
+      authToken,
     }),
-    [user, token, login, getCurrentUser]
+    [user, authToken, login]
   );
 
   return (

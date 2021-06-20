@@ -1,11 +1,14 @@
 import React from "react";
-import { Router } from "@reach/router";
+import { navigate, Router } from "@reach/router";
 import { Dummy, Home, Login } from "./pages";
 import Layout from "./components/layout/Layout";
-import { AuthProvider } from "./providers/auth/context";
+import useAuth, { AuthProvider } from "./providers/auth/context";
 
 const PrivateRoute = ({ render, ...props }) => {
-  // TODO: Authentication logic goes here.
+  const { user } = useAuth();
+  if (!user) {
+    navigate("/login");
+  }
   return render(props);
 };
 
