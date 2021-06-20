@@ -1,11 +1,14 @@
-import React from 'react';
+import React, { useContext} from 'react';
 import 'antd/dist/antd.css';
 import { Col, Row, Button } from "antd";
+import SiteContext from "../../providers/site/SiteContext";
 import ilustrationOnlineShopping from "../../assets/img/illustration-online-shopping.png";
 
 import "./startedPage.less";
 
 const StartedPage = () => {
+    const { isMobile } = useContext(SiteContext);
+
     return (
         <div className="startedPage">
             <Row align="middle">
@@ -17,7 +20,7 @@ const StartedPage = () => {
                     </div>
                 </Col>
                 <Col lg={10}>
-                    <img alt="ilustration-online-shopping" src={ilustrationOnlineShopping} id="image-ilustration"/>
+                    <img alt="ilustration-online-shopping" src={ilustrationOnlineShopping} id="image-ilustration" width={ isMobile ? 200 : 400 }/>
                 </Col>
             </Row>
         </div>
