@@ -1,5 +1,5 @@
 import React from "react";
-import { Form, Input, Button, Divider } from "antd";
+import { Form, Input, Button, Divider, Alert } from "antd";
 import GoogleIcon from "../../../../assets/img/google-icon.png";
 import { Typography } from "antd";
 import "./login-form.less";
@@ -9,14 +9,16 @@ const { Text, Link } = Typography;
 const LoginForm = () => {
   const [form] = Form.useForm();
   const { login } = useAuth();
-  const { run, loading } = login;
+  const { run, loading, error } = login;
 
   const onFinish = (values) => {
-    console.log("onfinish");
     run(values);
   };
   return (
     <div className="login-form">
+      {error && (
+        <Alert message="Email or Password Incorrect" type="error" showIcon />
+      )}
       <Form
         layout="horizontal"
         form={form}

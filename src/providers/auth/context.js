@@ -38,17 +38,9 @@ export function AuthProvider({ children }) {
       throwOnError: true,
       onSuccess: ({ result }, params) => {
         if (result !== null) {
-          console.log("succsess");
-          console.log(result);
-          console.log(params);
           setUser({ username: result.vendor.sallerName });
           // navigate("/");
         }
-      },
-      onError: (err, params) => {
-        console.log("error");
-        console.log(err);
-        console.log(params);
       },
       mock: mocks.users,
     }
@@ -61,12 +53,6 @@ export function AuthProvider({ children }) {
 
   const login = useApi(
     (values) => {
-      console.log(
-        JSON.stringify({
-          username: values.email,
-          password: values.password,
-        })
-      );
       return {
         url: "https://deuvox-dev-1.herokuapp.com/api/v1/login",
         method: "post",
@@ -81,17 +67,9 @@ export function AuthProvider({ children }) {
       manual: true,
       throwOnError: true,
       onSuccess: ({ result }, params) => {
-        console.log("succsess");
-        console.log(result);
-        console.log(params);
         setUser({ username: result.username });
         setAuthToken(result.accessauthToken);
         navigate("/");
-      },
-      onError: (err, params) => {
-        console.log("error");
-        console.log(err);
-        console.log(params);
       },
       mock: mocks.login,
     }
