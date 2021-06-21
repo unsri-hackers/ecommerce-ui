@@ -1,5 +1,6 @@
 import useRequest from "@ahooksjs/use-request";
 import React, { useEffect, useState } from "react";
+import ProductCategory from "../productCategories/ProductCategories";
 
 const Dummy = () => {
   const [name, setName] = useState("arief");
@@ -39,6 +40,7 @@ const Dummy = () => {
         {name} - {status}
       </p>
       <button onClick={() => buttonOnClick()}>click me</button>
+      <ProductCategory />
     </>
   );
 };
