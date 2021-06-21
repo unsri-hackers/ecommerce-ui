@@ -7,6 +7,7 @@ import Layout from "./components/layout/Layout";
 import { Dummy, Home, Login, StartedPage, ProductCategories } from "./pages";
 import SiteContext from "./providers/site/SiteContext";
 
+
 const PrivateRoute = ({ render, ...props }) => {
   // TODO: Authentication logic goes here.
   return render(props);
@@ -42,6 +43,8 @@ const App = () => {
           <Login path="/login" />
 
           <Dummy path="/-/dummy" />
+
+          <PrivateRoute path="/" render={Layout(ProductCategories)} />
 
           <PrivateRoute path="/" render={Layout(StartedPage)} />
 
