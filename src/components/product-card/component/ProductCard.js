@@ -1,5 +1,6 @@
 import React from 'react';
-import { Card, Rate } from 'antd';
+import { Card } from 'antd';
+import starIcon from "../../../assets/img/ic_star.svg";
 
 const { Meta } = Card;
 const ProductCard = (props) => {
@@ -13,7 +14,13 @@ const ProductCard = (props) => {
         <Meta title={props.data.name} description={`Rp. ${props.data.price}`} />
       </Card>
       <div className="rate">
-        <Rate disabled defaultValue={1} />
+        <div className="star-icon">
+          <img
+            alt="star-icon"
+            src={starIcon}
+            className="star-icon"
+          />
+        </div>
         <div className="text">4.9</div>
       </div>
     </>
