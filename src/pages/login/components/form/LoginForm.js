@@ -16,15 +16,15 @@ const LoginForm = () => {
   };
   return (
     <div className="login-form">
-      {error && (
-        <Alert message="Email or Password Incorrect" type="error" showIcon />
-      )}
       <Form
         layout="horizontal"
         form={form}
         requiredMark={false}
         onFinish={onFinish}
       >
+        {error && (
+          <Alert message="Email or Password Incorrect" type="error" showIcon />
+        )}
         <Form.Item
           label="Email Address"
           name="email"
