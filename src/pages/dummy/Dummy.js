@@ -1,10 +1,15 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useApi } from "../../hooks/useApi";
 import mocks from "../../mocks";
+import SiteContext from "../../providers/site/SiteContext";
+import Product from "../../components/product-card/Product";
+import ProductCategory from "../productCategories/ProductCategories";
 
 const Dummy = () => {
   const [name, setName] = useState("arief");
   const [status, setStatus] = useState("single");
+
+  const { isMobile } = useContext(SiteContext);
 
   const {
     data: product1,
@@ -30,7 +35,7 @@ const Dummy = () => {
       <p>List of product:</p>
       <ul>
         {products && products.map(product => (
-          <ol>{product.name} - Rp {product.price}</ol>
+          <ol key={product.id}>{product.name} - Rp {product.price}</ol>
         ))}
       </ul>
 
@@ -38,6 +43,9 @@ const Dummy = () => {
         {name} - {status}
       </p>
       <button onClick={() => buttonOnClick()}>click me</button>
+      <p>Is Mobile? {String(isMobile)}</p>
+      <Product />
+      <ProductCategory />
     </>
   );
 };
