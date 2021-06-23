@@ -3,6 +3,8 @@ import { useApi } from "../../hooks/useApi";
 import mocks from "../../mocks";
 import SiteContext from "../../providers/site/SiteContext";
 import Product from "../../components/product-card/Product";
+import OnGoingOrders from "../../components/on-going-orders/OnGoingOrders"
+
 import ProductCategory from "../productCategories/ProductCategories";
 
 const Dummy = () => {
@@ -45,6 +47,7 @@ const Dummy = () => {
       <button onClick={() => buttonOnClick()}>click me</button>
       <p>Is Mobile? {String(isMobile)}</p>
       <Product />
+      <OnGoingOrders />
       <ProductCategory />
     </>
   );
