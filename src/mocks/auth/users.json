@@ -1,0 +1,11 @@
+{
+  "result": {
+    "vendor": {
+      "sellerId": 5,
+      "sallerName": "wewgu12223@gmail.com",
+      "avatar": "https://i.pravatar.cc/300"
+    }
+  },
+  "statusCode": "OK",
+  "message": "Seller successfully logged in"
+}

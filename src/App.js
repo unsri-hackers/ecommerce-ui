@@ -1,15 +1,19 @@
 import React, { useMemo } from "react";
-import { Router, Location, LocationProvider } from "@reach/router";
+import { navigate,Router, Location, LocationProvider } from "@reach/router";
 import { useSize } from "ahooks";
 import ReactGA from "react-ga";
 import { Helmet } from "react-helmet";
 import Layout from "./components/layout/Layout";
 import { Dummy, Home, Login, StartedPage } from "./pages";
 import SiteContext from "./providers/site/SiteContext";
+import useAuth, { AuthProvider } from "./providers/auth/context";
 
 
 const PrivateRoute = ({ render, ...props }) => {
-  // TODO: Authentication logic goes here.
+  const { user } = useAuth();
+  if (!user) {
+    navigate("/login");
+  }
   return render(props);
 };
 
@@ -33,6 +37,8 @@ const App = () => {
   );
 
   return (
+
+    <AuthProvider>
     <SiteContext.Provider value={{ isMobile }}>
       <LocationProvider>
         <Helmet defaultTitle="Deuvox" titleTemplate="%s | Deuvox">
@@ -51,6 +57,8 @@ const App = () => {
         <Location children={(context) => trackPageView(context.location)} />
       </LocationProvider>
     </SiteContext.Provider>
+</AuthProvider>
+
   );
 };
 
