@@ -1,15 +1,18 @@
 import React from "react";
-import { Form, Input, Button, Divider } from "antd";
+import { Form, Input, Button, Divider, Alert } from "antd";
 import GoogleIcon from "../../../../assets/img/google-icon.png";
 import { Typography } from "antd";
 import "./login-form.less";
-
+import useAuth from "../../../../providers/auth/context";
 const { Text, Link } = Typography;
 
 const LoginForm = () => {
   const [form] = Form.useForm();
+  const { login } = useAuth();
+  const { run, loading, error } = login;
+
   const onFinish = (values) => {
-    console.log(values);
+    run(values);
   };
   return (
     <div className="login-form">
@@ -19,6 +22,9 @@ const LoginForm = () => {
         requiredMark={false}
         onFinish={onFinish}
       >
+        {error && (
+          <Alert message="Email or Password Incorrect" type="error" showIcon />
+        )}
         <Form.Item
           label="Email Address"
           name="email"
@@ -48,7 +54,12 @@ const LoginForm = () => {
 
         <Form.Item>
           <div className="submit-button">
-            <Button type="primary" htmlType="submit" shape="round">
+            <Button
+              type="primary"
+              htmlType="submit"
+              shape="round"
+              loading={loading}
+            >
               Login
             </Button>
           </div>
