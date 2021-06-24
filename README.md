@@ -30,6 +30,16 @@ $ yarn start
 
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
+#### Mock Backend Response
+
+To mock backend response, specify `REACT_APP_USE_MOCK_DATA` environment variable to `true`.
+
+```
+$ REACT_APP_USE_MOCK_DATA=true yarn start
+```
+
+Then, add/modify the mock response in `mock/data` folder.
+
 #### Running the tests :scientist:
 
 ```
