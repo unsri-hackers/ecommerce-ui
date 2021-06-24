@@ -6,6 +6,8 @@ import addNewProduct from "../../assets/img/add-new-product.png";
 import { UserOutlined } from "@ant-design/icons";
 import useAuth from "../../providers/auth/context";
 import "./Header.less";
+import { Link } from '@reach/router'
+
 
 const { Search } = Input;
 
@@ -16,7 +18,9 @@ const Header = () => {
       <div className="container">
         <Row align="middle" justify="center">
           <Col xs={0} sm={0} md={4}>
-            <Logo />
+            <Link to="/">
+              <Logo />
+            </Link>
           </Col>
 
           <Col xs={5} sm={0}>
