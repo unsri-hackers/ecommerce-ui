@@ -1,6 +1,7 @@
 import useRequest from "@ahooksjs/use-request";
 import React, { useEffect, useState } from "react";
 import ProductCategory from "../productCategories/ProductCategories";
+import Upload from "../upload/UploadPage";
 
 const Dummy = () => {
   const [name, setName] = useState("arief");
@@ -41,6 +42,7 @@ const Dummy = () => {
       </p>
       <button onClick={() => buttonOnClick()}>click me</button>
       <ProductCategory />
+      <Upload />
     </>
   );
 };
