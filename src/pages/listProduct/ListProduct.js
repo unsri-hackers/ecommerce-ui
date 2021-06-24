@@ -1,6 +1,8 @@
 import React from 'react';
 import { Row, Col } from "antd";
 import Product from '../../components/product-card/Product'
+import OnGoingOrders from '../../components/on-going-orders/OnGoingOrders';
+import ProductCategories from '../productCategories/ProductCategories'
 import './ListProduct.less'
 
 const ListProduct = () => {
@@ -9,14 +11,14 @@ const ListProduct = () => {
       <Row>
         <Col span={24}>
           <div className="on-going-orders">
-            <Product />
+            <OnGoingOrders />
           </div>
         </Col>
       </Row>
       <Row>
         <Col span={24}>
           <div className="product-categories">
-            <Product />
+            <ProductCategories />
           </div>
         </Col>
       </Row>
