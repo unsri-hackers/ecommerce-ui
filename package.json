@@ -11,6 +11,8 @@
     "ahooks": "^2.10.5",
     "antd": "^4.15.5",
     "babel-loader": "8.1.0",
+    "cloudinary-core": "^2.11.2",
+    "cloudinary-react": "^1.6.6",
     "craco-less": "^1.17.1",
     "node-sass": "^6.0.0",
     "react": "^17.0.2",

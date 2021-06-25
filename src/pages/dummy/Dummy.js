@@ -1,4 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
+import { CloudinaryContext } from "cloudinary-react";
+import { Helmet } from "react-helmet";
 import { useApi } from "../../hooks/useApi";
 import mocks from "../../mocks";
 import SiteContext from "../../providers/site/SiteContext";
@@ -6,6 +8,7 @@ import Product from "../../components/product-card/Product";
 import OnGoingOrders from "../../components/on-going-orders/OnGoingOrders"
 
 import ProductCategory from "../productCategories/ProductCategories";
+import { openUploadWidget } from "../../utils/CloudinaryService";
 
 const Dummy = () => {
   const [name, setName] = useState("arief");
@@ -31,8 +34,36 @@ const Dummy = () => {
     }
   }, [name, getProduct1]);
 
+
+  const [imageURL, setImageURL] = useState();
+  const beginUpload = (tag) => {
+    const uploadOptions = {
+      cloudName: "deuvox",
+      tags: [tag],
+      uploadPreset: "deuvox-products-unsigned",
+      maxFiles: 1,
+    };
+
+    openUploadWidget(uploadOptions, (error, result) => {
+      if (!error) {
+        if (result.event === "success") {
+          setImageURL(result.info.secure_url);
+        }
+      } else {
+        alert(error);
+      }
+    });
+  };
+
   return (
     <>
+      <Helmet>
+        <script
+          src="https://widget.cloudinary.com/v2.0/global/all.js"
+          type="text/javascript"
+        ></script>
+      </Helmet>
+
       <p>Product: {JSON.stringify(product1)}</p>
       <p>List of product:</p>
       <ul>
@@ -49,6 +80,10 @@ const Dummy = () => {
       <Product />
       <OnGoingOrders />
       <ProductCategory />
+
+      <CloudinaryContext cloudName="deuvox"></CloudinaryContext>
+      <button onClick={() => beginUpload()}>Upload photos</button>
+      <p>{imageURL}</p>
     </>
   );
 };
