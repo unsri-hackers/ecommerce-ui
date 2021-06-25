@@ -6,7 +6,6 @@ import "./upload.less";
 const { Option } = Select;
 
 const UploadPage = () => {
-    
     const [form] = Form.useForm();
     const onFinish = (values) => {
         console.log(values);
