@@ -1,4 +1,3 @@
-import React, { useState, useEffect } from 'react';
 import { Form, Input, Select, InputNumber, Upload, Button, Row, Col } from 'antd';
 import UploadPhotosPageEmpty from "../../assets/img/Upload-Photos-Page-Empty.png";
 
