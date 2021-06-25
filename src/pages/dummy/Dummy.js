@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useApi } from "../../hooks/useApi";
 import mocks from "../../mocks";
+import ProductCategory from "../productCategories/ProductCategories";
+import Upload from "../upload/UploadPage";
 
 const Dummy = () => {
   const [name, setName] = useState("arief");
@@ -38,6 +40,8 @@ const Dummy = () => {
         {name} - {status}
       </p>
       <button onClick={() => buttonOnClick()}>click me</button>
+      <ProductCategory />
+      <Upload />
     </>
   );
 };
