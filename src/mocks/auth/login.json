@@ -1,0 +1,11 @@
+{
+  "result": {
+    "id": 5,
+    "username": "wewgu12223@gmail.com",
+    "email": "wewgu12223@gmail.com",
+    "tokenType": "Bearer",
+    "accessToken": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ3ZXdndTEyMjIzQGdtYWlsLmNvbSIsImlhdCI6MTYyMzY4NzYwMCwiZXhwIjozMjAxNTM1MjAwfQ.inIZkGb-kSUpzUXbCVnLrAk04BTSUbn2cK65af56nQTS9cQBCKGGwQwEriluYZHj12XmNR--T_AZKAC1tfCcrA"
+  },
+  "statusCode": "OK",
+  "message": "Seller successfully logged in"
+}
