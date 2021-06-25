@@ -2,11 +2,25 @@
   {
     "id": 1,
     "name": "mock-buku",
-    "price": 10000.00
+    "price": 10000.00,
+    "img" :"https://pbgroupeu.files.wordpress.com/2021/05/pexels-photo-5325838.jpeg?w=867&h=576&crop=1"
   },
   {
     "id": 2,
     "name": "mock-baju",
-    "price": 100000.00
+    "price": 100000.00,
+    "img" :"https://pbgroupeu.files.wordpress.com/2021/05/pexels-photo-5325838.jpeg?w=867&h=576&crop=1"
+  },
+  {
+    "id": 3,
+    "name": "mock-baju",
+    "price": 100000.00,
+    "img" :"https://pbgroupeu.files.wordpress.com/2021/05/pexels-photo-5325838.jpeg?w=867&h=576&crop=1"
+  },
+  {
+    "id": 3,
+    "name": "mock-baju",
+    "price": 100000.00,
+    "img" :"https://pbgroupeu.files.wordpress.com/2021/05/pexels-photo-5325838.jpeg?w=867&h=576&crop=1"
   }
 ]
