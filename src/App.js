@@ -1,5 +1,5 @@
 import React, { useMemo } from "react";
-import { navigate,Router, Location, LocationProvider } from "@reach/router";
+import { Router, Location, LocationProvider } from "@reach/router";
 import { useSize } from "ahooks";
 import ReactGA from "react-ga";
 import { Helmet } from "react-helmet";
