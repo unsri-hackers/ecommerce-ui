@@ -18,8 +18,9 @@ export function AuthProvider({ children }) {
     "Content-Type": "application/json",
     Authorization: "",
   });
-  const [user, setUser] = useState();
+  // const [user, setUser] = useState();
   const [authToken, setAuthToken] = useLocalStorageState("authToken", "");
+  const [authUser, setAuthUser] = useLocalStorageState("authUser", "");
 
   useEffect(() => {
     setReqHeader((reqHeader) => {
@@ -27,29 +28,28 @@ export function AuthProvider({ children }) {
     });
   }, [authToken]);
 
-  const getCurrentUser = useApi(
-    {
-      url: "https://deuvox-dev-1.herokuapp.com/api/v1/users",
-      method: "get",
-      headers: reqHeader,
-    },
-    {
-      manual: true,
-      throwOnError: true,
-      onSuccess: ({ result }, params) => {
-        if (result !== null) {
-          setUser({ username: result.vendor.sallerName });
-          // navigate("/");
-        }
-      },
-      mock: mocks.users,
-    }
-  );
-  const { run: runCurrentUser } = getCurrentUser;
-
-  useEffect(() => {
-    runCurrentUser();
-  }, [runCurrentUser]);
+  // const getCurrentUser = useApi(
+  //   {
+  //     url: "https://deuvox-dev-1.herokuapp.com/api/v1/users",
+  //     method: "get",
+  //     headers: reqHeader,
+  //   },
+  //   {
+  //     manual: true,
+  //     throwOnError: true,
+  //     onSuccess: ({ result }, params) => {
+  //       if (result !== null) {
+  //         setUser({ username: result.vendor.sallerName });
+  //         // navigate("/");
+  //       }
+  //     },
+  //     mock: mocks.users,
+  //   }
+  // );
+  // const { run: runCurrentUser } = getCurrentUser;
+  //  useEffect(() => {
+  //     runCurrentUser();
+  //   }, [runCurrentUser]);
 
   const login = useApi(
     (values) => {
@@ -67,8 +67,8 @@ export function AuthProvider({ children }) {
       manual: true,
       throwOnError: true,
       onSuccess: ({ result }, params) => {
-        setUser({ username: result.username });
-        setAuthToken(result.accessauthToken);
+        setAuthToken(result.accessToken);
+        setAuthUser(result.username);
         navigate("/");
       },
       mock: mocks.login,
@@ -77,11 +77,11 @@ export function AuthProvider({ children }) {
 
   const memoedValue = useMemo(
     () => ({
-      user,
       login,
       authToken,
+      authUser,
     }),
-    [user, authToken, login]
+    [authToken, authUser, login]
   );
 
   return (
