@@ -4,7 +4,7 @@ import { useSize } from "ahooks";
 import ReactGA from "react-ga";
 import { Helmet } from "react-helmet";
 import Layout from "./components/layout/Layout";
-import { Dummy, Home, Login, StartedPage, Upload } from "./pages";
+import { Dummy, Home, ListProduct, Login, StartedPage, Upload } from "./pages";
 import SiteContext from "./providers/site/SiteContext";
 import useAuth, { AuthProvider } from "./providers/auth/context";
 
@@ -53,6 +53,8 @@ const App = () => {
           <PrivateRoute path="/products/upload" render={Layout(Upload)} />
 
           <PrivateRoute path="/" render={Layout(StartedPage)} />
+
+          <PrivateRoute path="/products" render={Layout(ListProduct)} />
 
           <PrivateRoute path="/" render={Layout(Home)} />
         </Router>

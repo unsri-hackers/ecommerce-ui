@@ -8,6 +8,7 @@ import useAuth from "../../providers/auth/context";
 import { Link } from "@reach/router";
 import "./Header.less";
 
+
 const { Search } = Input;
 
 const Header = () => {
@@ -17,7 +18,9 @@ const Header = () => {
       <div className="container">
         <Row align="middle" justify="center">
           <Col xs={0} sm={0} md={4}>
-            <Logo />
+            <Link to="/">
+              <Logo />
+            </Link>
           </Col>
 
           <Col xs={5} sm={0}>
