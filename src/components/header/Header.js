@@ -5,6 +5,7 @@ import notificationIcon from "../../assets/img/notificationIcon.png";
 import addNewProduct from "../../assets/img/add-new-product.png";
 import { UserOutlined } from "@ant-design/icons";
 import useAuth from "../../providers/auth/context";
+import { Link } from "@reach/router";
 import "./Header.less";
 
 const { Search } = Input;
@@ -20,7 +21,7 @@ const Header = () => {
           </Col>
 
           <Col xs={5} sm={0}>
-             <Avatar size={48} icon={<UserOutlined />} id="avatar" />
+            <Avatar size={48} icon={<UserOutlined />} id="avatar" />
           </Col>
 
           <Col xs={12} sm={7} md={7}>
@@ -29,13 +30,15 @@ const Header = () => {
 
           <Col xs={7} sm={7} md={5}>
             <div className="icon">
-              <Badge>
-                <img
-                  alt="add-new-product"
-                  src={addNewProduct}
-                  id="addNewProduct"
-                />
-              </Badge>
+              <Link to="/products/upload">
+                <Badge>
+                  <img
+                    alt="add-new-product"
+                    src={addNewProduct}
+                    id="addNewProduct"
+                  />
+                </Badge>
+              </Link>
               <Badge count={0} showZero color="yellow">
                 <img
                   alt="notificationIcon"

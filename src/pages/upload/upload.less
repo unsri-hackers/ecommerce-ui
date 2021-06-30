@@ -1,6 +1,7 @@
 .upload {
     .container {
         margin-top: 73px;
+        margin-bottom: 73px;
     }
 
     .form-upload {
@@ -13,11 +14,6 @@
         margin-bottom: 32px;
     }
 
-    .label {
-        font-size: 15px;
-        margin-bottom: 2px;
-    }
-
     .title-item-details {
         font-weight: bold;
         font-size: 28px;
@@ -26,16 +22,6 @@
 
     .description .ant-input {
         height: 150px;
-    }
-
-    .condition-weight-stock {
-        display: inline-block;
-        width: 100px !important;
-        margin-right: 10px;
-    }
-
-    .item-condition-weight-stock .ant-input {
-        height: 32px;
     }
 
     .button-upload .ant-btn {
@@ -53,8 +39,21 @@
     .caption-upload {
         margin-top: 10px;
         color: red;
-        p{
+
+        p {
             margin: 0;
+        }
+    }
+}
+
+@media screen and (max-width: 443px) {
+    .upload {
+        .form-upload {
+            width: 300px;
+        }
+
+        img {
+            width: 300px;
         }
     }
 }

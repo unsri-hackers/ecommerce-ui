@@ -50,7 +50,7 @@ const App = () => {
 
           <Dummy path="/-/dummy" />
 
-          <PrivateRoute path="/" render={Layout(Upload)} />
+          <PrivateRoute path="/products/upload" render={Layout(Upload)} />
 
           <PrivateRoute path="/" render={Layout(StartedPage)} />
 
