@@ -9,24 +9,27 @@ import React, {
 } from "react";
 import { useApi } from "../../hooks/useApi";
 import mocks from "../../mocks";
-import { browserName } from "react-device-detect";
 const AuthContext = createContext(null);
 
 export function AuthProvider({ children }) {
   const [reqHeader, setReqHeader] = useState({
-    "Device-id": browserName,
+    "Device-id": "",
     "Content-Type": "application/json",
     Authorization: "",
   });
   // const [user, setUser] = useState();
   const [authToken, setAuthToken] = useLocalStorageState("authToken", "");
   const [authUser, setAuthUser] = useLocalStorageState("authUser", "");
-
+  const [authId, setAuthId] = useLocalStorageState("authId", "");
   useEffect(() => {
     setReqHeader((reqHeader) => {
-      return { ...reqHeader, Authorization: `Bearer ${authToken}` };
+      return {
+        ...reqHeader,
+        Authorization: `Bearer ${authToken}`,
+        "Device-id": authId,
+      };
     });
-  }, [authToken]);
+  }, [authToken, authId]);
 
   // const getCurrentUser = useApi(
   //   {
@@ -80,8 +83,10 @@ export function AuthProvider({ children }) {
       login,
       authToken,
       authUser,
+      reqHeader,
+      setAuthId,
     }),
-    [authToken, authUser, login]
+    [authToken, authUser, login, reqHeader, setAuthId]
   );
 
   return (
