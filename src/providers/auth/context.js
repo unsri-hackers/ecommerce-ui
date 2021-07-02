@@ -9,6 +9,8 @@ import React, {
 } from "react";
 import { useApi } from "../../hooks/useApi";
 import mocks from "../../mocks";
+import { browserName } from "react-device-detect";
+
 const AuthContext = createContext(null);
 
 export function AuthProvider({ children }) {
@@ -17,19 +19,23 @@ export function AuthProvider({ children }) {
     "Content-Type": "application/json",
     Authorization: "",
   });
+  const deviceId = `${browserName} ${new Date().toLocaleString()}`;
   // const [user, setUser] = useState();
-  const [authToken, setAuthToken] = useLocalStorageState("authToken", "");
-  const [authUser, setAuthUser] = useLocalStorageState("authUser", "");
-  const [authId, setAuthId] = useLocalStorageState("authId", "");
+  console.log(deviceId);
+  const [auth, setAuth] = useLocalStorageState("auth", {
+    token: "",
+    user: "",
+    deviceId: "",
+  });
   useEffect(() => {
     setReqHeader((reqHeader) => {
       return {
         ...reqHeader,
-        Authorization: `Bearer ${authToken}`,
-        "Device-id": authId,
+        Authorization: `Bearer ${auth.token}`,
+        "Device-id": auth.deviceId,
       };
     });
-  }, [authToken, authId]);
+  }, [auth]);
 
   // const getCurrentUser = useApi(
   //   {
@@ -63,15 +69,21 @@ export function AuthProvider({ children }) {
           username: values.email,
           password: values.password,
         }),
-        headers: reqHeader,
+        headers: {
+          ...reqHeader,
+          "Device-id": deviceId,
+        },
       };
     },
     {
       manual: true,
       throwOnError: true,
       onSuccess: ({ result }, params) => {
-        setAuthToken(result.accessToken);
-        setAuthUser(result.username);
+        setAuth({
+          token: result.accessToken,
+          user: result.username,
+          deviceId: deviceId,
+        });
         navigate("/");
       },
       mock: mocks.login,
@@ -81,12 +93,10 @@ export function AuthProvider({ children }) {
   const memoedValue = useMemo(
     () => ({
       login,
-      authToken,
-      authUser,
+      auth,
       reqHeader,
-      setAuthId,
     }),
-    [authToken, authUser, login, reqHeader, setAuthId]
+    [auth, login, reqHeader]
   );
 
   return (

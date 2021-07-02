@@ -4,17 +4,15 @@ import GoogleIcon from "../../../../assets/img/google-icon.png";
 import { Typography } from "antd";
 import "./login-form.less";
 import useAuth from "../../../../providers/auth/context";
-import { browserName } from "react-device-detect";
 const { Text, Link } = Typography;
 
 const LoginForm = () => {
   const [form] = Form.useForm();
-  const { login, setAuthId } = useAuth();
-  const { run, loading, error } = login;
+  const { login } = useAuth();
+  const { run: doLogin, loading, error } = login;
 
   const onFinish = (values) => {
-    setAuthId(`${browserName} ${new Date().toLocaleString()}`);
-    run(values);
+    doLogin(values);
   };
   return (
     <div className="login-form">

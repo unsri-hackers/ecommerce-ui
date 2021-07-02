@@ -9,7 +9,7 @@ import useAuth from "../../providers/auth/context";
 
 const Product = () => {
   const { reqHeader } = useAuth();
-  const { data: products, run } = useApi(
+  const { data: products, run: getProducts } = useApi(
     {
       url: "https://deuvox-dev-1.herokuapp.com/api/v1/storefront/products/",
       method: "get",
@@ -18,8 +18,8 @@ const Product = () => {
     { mock: mocks.productList }
   );
   useEffect(() => {
-    run();
-  }, [reqHeader, run]);
+    getProducts();
+  }, [reqHeader, getProducts]);
   return (
     <div className="product-card">
       <div className="container">

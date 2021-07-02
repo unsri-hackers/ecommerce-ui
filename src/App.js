@@ -9,8 +9,8 @@ import SiteContext from "./providers/site/SiteContext";
 import useAuth, { AuthProvider } from "./providers/auth/context";
 
 const PrivateRoute = ({ render, ...props }) => {
-  const { authUser, authToken } = useAuth();
-  if (!authUser || !authToken) {
+  const { auth } = useAuth();
+  if (auth && auth.token === "") {
     navigate("/login");
   }
   return render(props);
