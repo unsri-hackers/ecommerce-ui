@@ -1,5 +1,5 @@
 import React from "react";
-import { Avatar, Badge, Col, Input, Row } from "antd";
+import { Avatar, Badge, Col, Input, Row, Tooltip } from "antd";
 import Logo from "./Logo";
 import notificationIcon from "../../assets/img/notificationIcon.png";
 import addNewProduct from "../../assets/img/add-new-product.png";
@@ -39,13 +39,15 @@ const Header = () => {
                   id="addNewProduct"
                 />
               </Badge>
-              <Badge count={0} showZero color="yellow">
-                <img
-                  alt="notificationIcon"
-                  src={notificationIcon}
-                  id="notificationIcon"
-                />
-              </Badge>
+              <Tooltip placement="bottom" title="Coming soon">
+                <Badge count={0} showZero color="yellow">
+                  <img
+                    alt="notificationIcon"
+                    src={notificationIcon}
+                    id="notificationIcon"
+                  />
+                </Badge>    
+              </Tooltip>
             </div>
           </Col>
 
