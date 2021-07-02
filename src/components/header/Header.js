@@ -11,7 +11,7 @@ import { Link } from "@reach/router";
 const { Search } = Input;
 
 const Header = () => {
-  const { authUser } = useAuth();
+  const { auth } = useAuth();
   return (
     <header id="header">
       <div className="container">
@@ -56,7 +56,7 @@ const Header = () => {
           <Col xs={0} sm={9} md={7}>
             <div className="profile">
               <Avatar size={48} icon={<UserOutlined />} id="avatar" />
-              <p>{authUser && authUser}</p>
+              <p>{auth && auth.user}</p>
             </div>
           </Col>
         </Row>
