@@ -6,13 +6,12 @@ import addNewProduct from "../../assets/img/add-new-product.png";
 import { UserOutlined } from "@ant-design/icons";
 import useAuth from "../../providers/auth/context";
 import "./Header.less";
-import { Link } from '@reach/router'
-
+import { Link } from "@reach/router";
 
 const { Search } = Input;
 
 const Header = () => {
-  const { user } = useAuth();
+  const { auth } = useAuth();
   return (
     <header id="header">
       <div className="container">
@@ -24,7 +23,7 @@ const Header = () => {
           </Col>
 
           <Col xs={5} sm={0}>
-             <Avatar size={48} icon={<UserOutlined />} id="avatar" />
+            <Avatar size={48} icon={<UserOutlined />} id="avatar" />
           </Col>
 
           <Col xs={12} sm={7} md={7}>
@@ -57,7 +56,7 @@ const Header = () => {
           <Col xs={0} sm={9} md={7}>
             <div className="profile">
               <Avatar size={48} icon={<UserOutlined />} id="avatar" />
-              <p>{user && user.username}</p>
+              <p>{auth && auth.user}</p>
             </div>
           </Col>
         </Row>
