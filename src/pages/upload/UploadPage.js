@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Form, Input, Select, InputNumber, Button, Row, Col } from 'antd';
 import UploadPhotosPageEmpty from "../../assets/img/Upload-Photos-Page-Empty.png";
 import { CloudinaryContext } from "cloudinary-react";
@@ -9,25 +9,59 @@ import "./upload.less";
 const { Option } = Select;
 
 const UploadPage = () => {
+    const [form] = Form.useForm();
+    useEffect(() => {
+        console.log("form", form);
+    }, [form]);
+    const [image, setImageURL] = useState();
 
-    const [setImageURL] = useState();
-    const beginUpload = (tag) => {
+
+    const beginUpload = () => {
+
         const uploadOptions = {
             cloudName: "deuvox",
             tags: [tag],
             uploadPreset: "deuvox-products-unsigned",
-            maxFiles: 1,
+            maxFiles: 10,
         };
 
         openUploadWidget(uploadOptions, (error, result) => {
             if (!error) {
                 if (result.event === "success") {
+                    console.log(result.info);
                     setImageURL(result.info.secure_url);
+                    /*
+                    Check deuvox API
+                    {
+                        "productName": ...
+                        ...
+                        "photos": [
+                            {
+                                "path": "https://...",
+                                "name": "asd"
+                            },
+                            {
+                                "path": "https://...",
+                                "name": "asd"
+                            }
+                        ]
+                    }
+                    */
+                    form.setFieldsValue({"photos": [
+                        ...form.getFieldValue("photos"), upload.array()
+                        // {
+                        //     "path": result.info.secure_url,
+                        //     "name": result.info.name, // ?
+                        // }
+                    ]
+                }
+                );
                 }
             } else {
                 alert(error);
             }
-        });
+        }
+        );
     };
 
     const onFinish = (values) => {
@@ -37,6 +71,10 @@ const UploadPage = () => {
     const onFinishFailed = (errorInfo) => {
         console.log('Failed:', errorInfo);
     };
+
+    const onFieldsChange = (changedFields, allFields) => {
+        console.log(changedFields, allFields);
+    }
 
     const children = [];
     for (let i = 10; i < 36; i++) {
@@ -75,11 +113,13 @@ const UploadPage = () => {
                                 <Form
                                     {...layout}
                                     layout="vertical"
+                                    form={form}
                                     onFinish={onFinish}
                                     onFinishFailed={onFinishFailed}
+                                    onFieldsChange={onFieldsChange}
                                 >
                                     <p className="title-item-upload">Item Upload</p>
-                                    <Form.Item label="Produck *">
+                                    <Form.Item label="Product *">
                                         <Form.Item
                                             name="productName"
                                             rules={[
@@ -160,11 +200,14 @@ const UploadPage = () => {
                                     <Form.Item className="description" label="Description" >
                                         <Input.TextArea />
                                     </Form.Item>
+                                    <Form.Item name="photos"/>
                                     <Form.Item label="Photos Upload *">
                                         <div className="button-upload">
                                             <CloudinaryContext cloudName="deuvox"></CloudinaryContext>
+                                            {/* <input type="file" onChange= {(e)=> setImage(e.target.files[0])}></input> */}
                                             <Button onClick={() => beginUpload()}>Upload</Button>
                                         </div>
+                                        {/* <img alt="tes" src={url} /> */}
                                         <div className="caption-upload">
                                             <p>* Capacity below 2MB on one photo</p>
                                             <p>* Size photo 200 x 200 Pixels</p>
