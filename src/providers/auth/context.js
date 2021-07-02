@@ -20,8 +20,6 @@ export function AuthProvider({ children }) {
     Authorization: "",
   });
   const deviceId = `${browserName} ${new Date().toLocaleString()}`;
-  // const [user, setUser] = useState();
-  console.log(deviceId);
   const [auth, setAuth] = useLocalStorageState("auth", {
     token: "",
     user: "",
