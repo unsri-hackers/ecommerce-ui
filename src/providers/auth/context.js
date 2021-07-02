@@ -10,46 +10,53 @@ import React, {
 import { useApi } from "../../hooks/useApi";
 import mocks from "../../mocks";
 import { browserName } from "react-device-detect";
+
 const AuthContext = createContext(null);
 
 export function AuthProvider({ children }) {
   const [reqHeader, setReqHeader] = useState({
-    "Device-id": browserName,
+    "Device-id": "",
     "Content-Type": "application/json",
     Authorization: "",
   });
-  const [user, setUser] = useState();
-  const [authToken, setAuthToken] = useLocalStorageState("authToken", "");
-
+  const deviceId = `${browserName} ${new Date().toLocaleString()}`;
+  const [auth, setAuth] = useLocalStorageState("auth", {
+    token: "",
+    user: "",
+    deviceId: "",
+  });
   useEffect(() => {
     setReqHeader((reqHeader) => {
-      return { ...reqHeader, Authorization: `Bearer ${authToken}` };
+      return {
+        ...reqHeader,
+        Authorization: `Bearer ${auth.token}`,
+        "Device-id": auth.deviceId,
+      };
     });
-  }, [authToken]);
+  }, [auth]);
 
-  const getCurrentUser = useApi(
-    {
-      url: "https://deuvox-dev-1.herokuapp.com/api/v1/users",
-      method: "get",
-      headers: reqHeader,
-    },
-    {
-      manual: true,
-      throwOnError: true,
-      onSuccess: ({ result }, params) => {
-        if (result !== null) {
-          setUser({ username: result.vendor.sallerName });
-          // navigate("/");
-        }
-      },
-      mock: mocks.users,
-    }
-  );
-  const { run: runCurrentUser } = getCurrentUser;
-
-  useEffect(() => {
-    runCurrentUser();
-  }, [runCurrentUser]);
+  // const getCurrentUser = useApi(
+  //   {
+  //     url: "https://deuvox-dev-1.herokuapp.com/api/v1/users",
+  //     method: "get",
+  //     headers: reqHeader,
+  //   },
+  //   {
+  //     manual: true,
+  //     throwOnError: true,
+  //     onSuccess: ({ result }, params) => {
+  //       if (result !== null) {
+  //         setUser({ username: result.vendor.sallerName });
+  //         // navigate("/");
+  //       }
+  //     },
+  //     mock: mocks.users,
+  //   }
+  // );
+  // const { run: runCurrentUser } = getCurrentUser;
+  //  useEffect(() => {
+  //     runCurrentUser();
+  //   }, [runCurrentUser]);
 
   const login = useApi(
     (values) => {
@@ -60,15 +67,21 @@ export function AuthProvider({ children }) {
           username: values.email,
           password: values.password,
         }),
-        headers: reqHeader,
+        headers: {
+          ...reqHeader,
+          "Device-id": deviceId,
+        },
       };
     },
     {
       manual: true,
       throwOnError: true,
       onSuccess: ({ result }, params) => {
-        setUser({ username: result.username });
-        setAuthToken(result.accessauthToken);
+        setAuth({
+          token: result.accessToken,
+          user: result.username,
+          deviceId: deviceId,
+        });
         navigate("/");
       },
       mock: mocks.login,
@@ -77,11 +90,11 @@ export function AuthProvider({ children }) {
 
   const memoedValue = useMemo(
     () => ({
-      user,
       login,
-      authToken,
+      auth,
+      reqHeader,
     }),
-    [user, authToken, login]
+    [auth, login, reqHeader]
   );
 
   return (

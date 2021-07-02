@@ -1,5 +1,5 @@
 import React, { useMemo } from "react";
-import { navigate,Router, Location, LocationProvider } from "@reach/router";
+import { navigate, Router, Location, LocationProvider } from "@reach/router";
 import { useSize } from "ahooks";
 import ReactGA from "react-ga";
 import { Helmet } from "react-helmet";
@@ -8,10 +8,9 @@ import { Dummy, Home, ListProduct, Login, StartedPage } from "./pages";
 import SiteContext from "./providers/site/SiteContext";
 import useAuth, { AuthProvider } from "./providers/auth/context";
 
-
 const PrivateRoute = ({ render, ...props }) => {
-  const { user } = useAuth();
-  if (!user) {
+  const { auth } = useAuth();
+  if (auth && auth.token === "") {
     navigate("/login");
   }
   return render(props);
@@ -37,30 +36,28 @@ const App = () => {
   );
 
   return (
-
     <AuthProvider>
-    <SiteContext.Provider value={{ isMobile }}>
-      <LocationProvider>
-        <Helmet defaultTitle="Deuvox" titleTemplate="%s | Deuvox">
-          <meta name="description" content="Deuvox is the best" />
-          <meta charSet="utf-8" />
-        </Helmet>
-        <Router>
-          <Login path="/login" />
+      <SiteContext.Provider value={{ isMobile }}>
+        <LocationProvider>
+          <Helmet defaultTitle="Deuvox" titleTemplate="%s | Deuvox">
+            <meta name="description" content="Deuvox is the best" />
+            <meta charSet="utf-8" />
+          </Helmet>
+          <Router>
+            <Login path="/login" />
 
-          <Dummy path="/-/dummy" />
+            <Dummy path="/-/dummy" />
 
-          <PrivateRoute path="/" render={Layout(StartedPage)} />
+            <PrivateRoute path="/" render={Layout(StartedPage)} />
 
-          <PrivateRoute path="/products" render={Layout(ListProduct)} />
+            <PrivateRoute path="/products" render={Layout(ListProduct)} />
 
-          <PrivateRoute path="/" render={Layout(Home)} />
-        </Router>
-        <Location children={(context) => trackPageView(context.location)} />
-      </LocationProvider>
-    </SiteContext.Provider>
-</AuthProvider>
-
+            <PrivateRoute path="/" render={Layout(Home)} />
+          </Router>
+          <Location children={(context) => trackPageView(context.location)} />
+        </LocationProvider>
+      </SiteContext.Provider>
+    </AuthProvider>
   );
 };
 

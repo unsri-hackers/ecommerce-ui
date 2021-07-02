@@ -9,10 +9,10 @@ const { Text, Link } = Typography;
 const LoginForm = () => {
   const [form] = Form.useForm();
   const { login } = useAuth();
-  const { run, loading, error } = login;
+  const { run: doLogin, loading, error } = login;
 
   const onFinish = (values) => {
-    run(values);
+    doLogin(values);
   };
   return (
     <div className="login-form">
