@@ -1,5 +1,5 @@
 import React from "react";
-import { Col, Row } from "antd";
+import { Col, Row, Tooltip } from "antd";
 import Logo from "../header/Logo";
 
 import "./Footer.less";
@@ -20,7 +20,7 @@ const Footer = () => {
                 <div className="logo-footer">
                   <Logo />
                 </div>
-                <p>Lorem ipsum dolor sit amet Lorem ipsum dolor elit</p>
+                <p>Situs jual beli online yang menghubungkan kamu dengan penjual terpercaya di Indonesia, dan menyediakan semua kebutuhanmu. Belanja online jadi lebih mudah dan terpercaya dengan Deuvox. Cek Sekarang!</p>
               </div>
             </Col>
             <Col
@@ -30,11 +30,17 @@ const Footer = () => {
               sm={{ span: 12 }}
             >
               <div className="footer-col">
-                <h4 className="title">Lorem, ipsum</h4>
+                  <h4 className="title">Services</h4>
                 <ul>
-                  <li>Dolor sit amet</li>
-                  <li>Constect elit</li>
-                  <li>Payments</li>
+                  <Tooltip placement="topLeft" title="Coming soon">
+                    <li>Products</li>
+                  </Tooltip>
+                  <Tooltip placement="topLeft" title="Coming soon">
+                    <li>Shop Now</li>
+                  </Tooltip>
+                  <Tooltip placement="topLeft" title="Coming soon">
+                    <li>Safe Payments</li>
+                  </Tooltip>
                 </ul>
               </div>
             </Col>
@@ -45,11 +51,19 @@ const Footer = () => {
               sm={{ span: 12 }}
             >
               <div className="footer-col">
-                <h4 className="title">Explore Us</h4>
+                <Tooltip placement="topLeft" title="Coming soon">
+                  <h4 className="title">Explore Us</h4>
+                </Tooltip>
                 <ul>
-                  <li>About</li>
-                  <li>Privacy Policy</li>
-                  <li>Terms &amp; Conditions.</li>
+                  <Tooltip placement="topLeft" title="Coming soon">
+                    <li>About</li>
+                  </Tooltip>
+                  <Tooltip placement="topLeft" title="Coming soon">
+                    <li>Privacy Policy</li>
+                  </Tooltip>
+                  <Tooltip placement="topLeft" title="Coming soon">
+                    <li>Terms &amp; Conditions</li>
+                  </Tooltip>
                 </ul>
               </div>
             </Col>
