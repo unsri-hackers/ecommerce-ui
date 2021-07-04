@@ -24,7 +24,7 @@ const { Option } = Select;
 const UploadPage = () => {
   const [form] = Form.useForm();
   const { reqHeader } = useAuth();
-
+  console.log(reqHeader);
   useEffect(() => {
     console.log("form", form);
   }, [form]);
@@ -38,7 +38,7 @@ const UploadPage = () => {
     (values) => {
       console.log(values);
       return {
-        url: "https://deuvox-dev-1.herokuapp.com//api/v1/storefront/products",
+        url: "https://deuvox-dev-1.herokuapp.com/api/v1/storefront/products",
         method: "post",
         body: JSON.stringify({
           productName: values.productName,

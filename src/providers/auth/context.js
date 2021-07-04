@@ -14,7 +14,7 @@ const AuthContext = createContext(null);
 
 export function AuthProvider({ children }) {
   const [reqHeader, setReqHeader] = useState({
-    "Device-id": browserName,
+    "Device-id": browserName + 3234242,
     "Content-Type": "application/json",
     Authorization: "",
   });
@@ -68,7 +68,7 @@ export function AuthProvider({ children }) {
       throwOnError: true,
       onSuccess: ({ result }, params) => {
         setUser({ username: result.username });
-        setAuthToken(result.accessauthToken);
+        setAuthToken(result.accessToken);
         navigate("/");
       },
       mock: mocks.login,
@@ -80,6 +80,7 @@ export function AuthProvider({ children }) {
       user,
       login,
       authToken,
+      reqHeader,
     }),
     [user, authToken, login]
   );
