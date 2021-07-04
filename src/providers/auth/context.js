@@ -82,7 +82,7 @@ export function AuthProvider({ children }) {
       authToken,
       reqHeader,
     }),
-    [user, authToken, login]
+    [user, authToken, login, reqHeader]
   );
 
   return (
