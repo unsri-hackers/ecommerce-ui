@@ -1,69 +1,64 @@
 import React, { useEffect, useState } from "react";
-import { Form, Input, Select, InputNumber, Button, Row, Col } from "antd";
+import {
+  Form,
+  Input,
+  Select,
+  InputNumber,
+  Button,
+  Row,
+  Col,
+  Upload,
+  Alert,
+  message,
+} from "antd";
 import UploadPhotosPageEmpty from "../../assets/img/Upload-Photos-Page-Empty.png";
-import { CloudinaryContext } from "cloudinary-react";
-import { openUploadWidget } from "../../utils/CloudinaryService";
+import { UploadOutlined } from "@ant-design/icons";
 import { Helmet } from "react-helmet";
-
+import useAuth from "../../providers/auth/context";
 import "./upload.less";
+import { useApi } from "../../hooks/useApi";
+import { navigate } from "@reach/router";
+import mocks from "../../mocks";
 const { Option } = Select;
 
 const UploadPage = () => {
   const [form] = Form.useForm();
+  const { reqHeader } = useAuth();
+
   useEffect(() => {
     console.log("form", form);
   }, [form]);
-  const [image, setImageURL] = useState();
-
-  const beginUpload = () => {
-    const uploadOptions = {
-      cloudName: "deuvox",
-      tags: [tag],
-      uploadPreset: "deuvox-products-unsigned",
-      maxFiles: 10,
-    };
-
-    openUploadWidget(uploadOptions, (error, result) => {
-      if (!error) {
-        if (result.event === "success") {
-          console.log(result.info);
-          setImageURL(result.info.secure_url);
-          /*
-                    Check deuvox API
-                    {
-                        "productName": ...
-                        ...
-                        "photos": [
-                            {
-                                "path": "https://...",
-                                "name": "asd"
-                            },
-                            {
-                                "path": "https://...",
-                                "name": "asd"
-                            }
-                        ]
-                    }
-                    */
-          form.setFieldsValue({
-            photos: [
-              ...form.getFieldValue("photos"),
-              upload.array(),
-              // {
-              //     "path": result.info.secure_url,
-              //     "name": result.info.name, // ?
-              // }
-            ],
-          });
-        }
-      } else {
-        alert(error);
-      }
-    });
-  };
-
+  const [imageList, setImageList] = useState([]);
+  const [imageListUrl, setImageListUrl] = useState([]);
+  const {
+    run: uploadProduct,
+    loading,
+    error,
+  } = useApi(
+    (values) => {
+      console.log(values);
+      return {
+        url: "https://deuvox-dev-1.herokuapp.com//api/v1/storefront/products",
+        method: "post",
+        body: JSON.stringify({
+          productName: values.productName,
+          price: values.price,
+          photos: values.photos,
+        }),
+        headers: reqHeader,
+      };
+    },
+    {
+      manual: true,
+      throwOnError: true,
+      onSuccess: ({ result }, params) => {
+        navigate("/products");
+      },
+      mock: mocks.uploadProduct,
+    }
+  );
   const onFinish = (values) => {
-    console.log("Success:", values);
+    uploadProduct({ ...values, photos: imageListUrl });
   };
 
   const onFinishFailed = (errorInfo) => {
@@ -73,13 +68,6 @@ const UploadPage = () => {
   const onFieldsChange = (changedFields, allFields) => {
     console.log(changedFields, allFields);
   };
-
-  const children = [];
-  for (let i = 10; i < 36; i++) {
-    children.push(
-      <Option key={i.toString(36) + i}>{i.toString(36) + i}</Option>
-    );
-  }
 
   function handleChange(value) {
     console.log(`selected ${value}`);
@@ -94,6 +82,48 @@ const UploadPage = () => {
       md: 18,
       xs: 24,
     },
+  };
+  console.log(imageListUrl);
+  const props = {
+    action: "https://api.cloudinary.com/v1_1/deuvox/image/upload",
+    data: {
+      upload_preset: "deuvox-products-unsigned",
+      cloud_name: "deuvox",
+    },
+    onChange: (info) => {
+      if (info.file.status === "done") {
+        console.log(info.file.response);
+        setImageListUrl([
+          ...imageListUrl,
+          {
+            name: info.file.response.original_filename,
+            path: info.file.response.url,
+          },
+        ]);
+      }
+    },
+    multiple: true,
+    listType: "picture",
+    onRemove: (image) => {
+      const index = imageList.indexOf(image);
+      const newImageList = imageList.slice();
+      newImageList.splice(index, 1);
+      const newImageListUrl = imageListUrl.slice();
+      newImageListUrl.splice(index, 1);
+      setImageList(newImageList);
+      setImageListUrl(newImageListUrl);
+    },
+    beforeUpload: (file, images) => {
+      console.log(file.type);
+      if (file.type !== "image/jpeg" && file.type !== "image/png") {
+        message.error(`${file.name} is not a png, jpg, jpeg file`);
+      }
+      setImageList([...imageList, ...images]);
+      return file.type === "image/png" || file.type === "image/jpeg"
+        ? true
+        : Upload.LIST_IGNORE;
+    },
+    imageList,
   };
 
   return (
@@ -118,6 +148,13 @@ const UploadPage = () => {
                   onFinishFailed={onFinishFailed}
                   onFieldsChange={onFieldsChange}
                 >
+                  {error && (
+                    <Alert
+                      message="Upload product unsuccessful, try again later"
+                      type="error"
+                      showIcon
+                    />
+                  )}
                   <p className="title-item-upload">Item Upload</p>
                   <Form.Item label="Product *">
                     <Form.Item
@@ -172,9 +209,7 @@ const UploadPage = () => {
                       mode="tags"
                       style={{ width: "100%" }}
                       onChange={handleChange}
-                    >
-                      {children}
-                    </Select>
+                    ></Select>
                     ,
                   </Form.Item>
 
@@ -215,21 +250,11 @@ const UploadPage = () => {
                   <Form.Item className="description" label="Description">
                     <Input.TextArea />
                   </Form.Item>
-                  <Form.Item name="photos" />
-                  <Form.Item label="Photos Upload *">
-                    <div className="button-upload">
-                      <CloudinaryContext cloudName="deuvox"></CloudinaryContext>
-                      {/* <input type="file" onChange= {(e)=> setImage(e.target.files[0])}></input> */}
-                      <Button onClick={() => beginUpload()}>Upload</Button>
-                    </div>
-                    {/* <img alt="tes" src={url} /> */}
-                    <div className="caption-upload">
-                      <p>* Capacity below 2MB on one photo</p>
-                      <p>* Size photo 200 x 200 Pixels</p>
-                    </div>
-                  </Form.Item>
+                  <Upload {...props}>
+                    <Button icon={<UploadOutlined />}>Select File</Button>
+                  </Upload>
                   <Form.Item className="button-submit">
-                    <Button type="primary" htmlType="submit">
+                    <Button type="primary" htmlType="submit" loading={loading}>
                       Save
                     </Button>
                   </Form.Item>
