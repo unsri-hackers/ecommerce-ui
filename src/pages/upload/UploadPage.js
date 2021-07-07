@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import {
   Form,
   Input,
@@ -24,10 +24,6 @@ const { Option } = Select;
 const UploadPage = () => {
   const [form] = Form.useForm();
   const { reqHeader } = useAuth();
-  console.log(reqHeader);
-  useEffect(() => {
-    console.log("form", form);
-  }, [form]);
   const [imageList, setImageList] = useState([]);
   const [imageListUrl, setImageListUrl] = useState([]);
   const {
@@ -60,18 +56,6 @@ const UploadPage = () => {
   const onFinish = (values) => {
     uploadProduct({ ...values, photos: imageListUrl });
   };
-
-  const onFinishFailed = (errorInfo) => {
-    console.log("Failed:", errorInfo);
-  };
-
-  const onFieldsChange = (changedFields, allFields) => {
-    console.log(changedFields, allFields);
-  };
-
-  function handleChange(value) {
-    console.log(`selected ${value}`);
-  }
 
   const layout = {
     labelCol: {
@@ -145,8 +129,6 @@ const UploadPage = () => {
                   layout="vertical"
                   form={form}
                   onFinish={onFinish}
-                  onFinishFailed={onFinishFailed}
-                  onFieldsChange={onFieldsChange}
                 >
                   {error && (
                     <Alert
@@ -205,12 +187,7 @@ const UploadPage = () => {
 
                   <Form.Item style={{ marginBottom: 0 }}>
                     <p className="label">Variant</p>
-                    <Select
-                      mode="tags"
-                      style={{ width: "100%" }}
-                      onChange={handleChange}
-                    ></Select>
-                    ,
+                    <Select mode="tags" style={{ width: "100%" }}></Select>,
                   </Form.Item>
 
                   <Form.Item style={{ marginBottom: 0 }}>

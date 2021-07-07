@@ -14,7 +14,7 @@ const AuthContext = createContext(null);
 
 export function AuthProvider({ children }) {
   const [reqHeader, setReqHeader] = useState({
-    "Device-id": browserName + 3234242,
+    "Device-id": browserName,
     "Content-Type": "application/json",
     Authorization: "",
   });
