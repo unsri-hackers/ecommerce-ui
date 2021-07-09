@@ -1,5 +1,5 @@
 import React from "react";
-import { Avatar, Badge, Col, Input, Row } from "antd";
+import { Avatar, Badge, Col, Input, Row, Tooltip } from "antd";
 import Logo from "./Logo";
 import notificationIcon from "../../assets/img/notificationIcon.png";
 import addNewProduct from "../../assets/img/add-new-product.png";
@@ -8,11 +8,10 @@ import useAuth from "../../providers/auth/context";
 import { Link } from "@reach/router";
 import "./Header.less";
 
-
 const { Search } = Input;
 
 const Header = () => {
-  const { user } = useAuth();
+  const { auth } = useAuth();
   return (
     <header id="header">
       <div className="container">
@@ -42,13 +41,15 @@ const Header = () => {
                   />
                 </Badge>
               </Link>
-              <Badge count={0} showZero color="yellow">
-                <img
-                  alt="notificationIcon"
-                  src={notificationIcon}
-                  id="notificationIcon"
-                />
-              </Badge>
+              <Tooltip placement="bottom" title="Coming soon">
+                <Badge count={0} showZero color="yellow">
+                  <img
+                    alt="notificationIcon"
+                    src={notificationIcon}
+                    id="notificationIcon"
+                  />
+                </Badge>
+              </Tooltip>
             </div>
           </Col>
 
@@ -59,7 +60,7 @@ const Header = () => {
           <Col xs={0} sm={9} md={7}>
             <div className="profile">
               <Avatar size={48} icon={<UserOutlined />} id="avatar" />
-              <p>{user && user.username}</p>
+              <p>{auth && auth.user}</p>
             </div>
           </Col>
         </Row>
