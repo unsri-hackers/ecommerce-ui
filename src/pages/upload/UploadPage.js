@@ -3,7 +3,6 @@ import {
   Form,
   Input,
   Select,
-  InputNumber,
   Button,
   Row,
   Col,
@@ -185,12 +184,12 @@ const UploadPage = () => {
                     </Form.Item>
                   </Form.Item>
 
-                  <Form.Item style={{ marginBottom: 0 }}>
+                  {/* <Form.Item style={{ marginBottom: 0 }}>
                     <p className="label">Variant</p>
                     <Select mode="tags" style={{ width: "100%" }}></Select>,
-                  </Form.Item>
+                  </Form.Item> */}
 
-                  <Form.Item style={{ marginBottom: 0 }}>
+                  {/* <Form.Item style={{ marginBottom: 0 }}>
                     <Form.Item
                       label="Condition *"
                       style={{
@@ -223,11 +222,11 @@ const UploadPage = () => {
                     >
                       <InputNumber />
                     </Form.Item>
-                  </Form.Item>
-                  <Form.Item className="description" label="Description">
+                  </Form.Item> */}
+                  {/* <Form.Item className="description" label="Description">
                     <Input.TextArea />
-                  </Form.Item>
-                  <Upload {...props}>
+                  </Form.Item> */}
+                  <Upload {...props} className="uploadButton">
                     <Button icon={<UploadOutlined />}>Select File</Button>
                   </Upload>
                   <Form.Item className="button-submit">
