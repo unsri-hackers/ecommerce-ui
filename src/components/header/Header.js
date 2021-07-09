@@ -5,8 +5,8 @@ import notificationIcon from "../../assets/img/notificationIcon.png";
 import addNewProduct from "../../assets/img/add-new-product.png";
 import { UserOutlined } from "@ant-design/icons";
 import useAuth from "../../providers/auth/context";
-import "./Header.less";
 import { Link } from "@reach/router";
+import "./Header.less";
 
 const { Search } = Input;
 
@@ -32,13 +32,15 @@ const Header = () => {
 
           <Col xs={7} sm={7} md={5}>
             <div className="icon">
-              <Badge>
-                <img
-                  alt="add-new-product"
-                  src={addNewProduct}
-                  id="addNewProduct"
-                />
-              </Badge>
+              <Link to="/products/upload">
+                <Badge>
+                  <img
+                    alt="add-new-product"
+                    src={addNewProduct}
+                    id="addNewProduct"
+                  />
+                </Badge>
+              </Link>
               <Tooltip placement="bottom" title="Coming soon">
                 <Badge count={0} showZero color="yellow">
                   <img
@@ -46,7 +48,7 @@ const Header = () => {
                     src={notificationIcon}
                     id="notificationIcon"
                   />
-                </Badge>    
+                </Badge>
               </Tooltip>
             </div>
           </Col>

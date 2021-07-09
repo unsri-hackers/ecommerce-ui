@@ -1,5 +1,5 @@
 import React from "react";
-import { Card } from "antd";
+import { Card, Image } from "antd";
 import starIcon from "../../../assets/img/ic_star.svg";
 
 const { Meta } = Card;
@@ -9,7 +9,15 @@ const ProductCard = (props) => {
       <Card
         hoverable
         bordered={false}
-        cover={<img alt={props.data.itemName} src={props.data.img} />}
+        cover={
+          <Image
+            alt={props.data.itemName}
+            src={
+              props.data.photos.length > 0 ? props.data.photos[0].path : "error"
+            }
+            fallback="https://res.cloudinary.com/deuvox/image/upload/v1625834869/deuvox-products/fallback_sgy85o.png"
+          />
+        }
       >
         <Meta
           title={props.data.itemName}
