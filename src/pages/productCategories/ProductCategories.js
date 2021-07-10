@@ -9,6 +9,7 @@ const ProductCategories = () => {
     return (
         <div className="productCategory">
             <div className="container">
+                <p>Product Category</p>
                 <Row>
                     {productCategories && productCategories.map((category,i) => (
                         <Col key={`category${i}`}>
