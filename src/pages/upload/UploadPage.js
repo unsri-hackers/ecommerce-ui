@@ -31,7 +31,6 @@ const UploadPage = () => {
     error,
   } = useApi(
     (values) => {
-      console.log(values);
       return {
         url: "https://deuvox-dev-1.herokuapp.com/api/v1/storefront/products",
         method: "post",
@@ -66,7 +65,6 @@ const UploadPage = () => {
       xs: 24,
     },
   };
-  console.log(imageListUrl);
   const props = {
     action: "https://api.cloudinary.com/v1_1/deuvox/image/upload",
     data: {
@@ -75,7 +73,6 @@ const UploadPage = () => {
     },
     onChange: (info) => {
       if (info.file.status === "done") {
-        console.log(info.file.response);
         setImageListUrl([
           ...imageListUrl,
           {
@@ -97,7 +94,6 @@ const UploadPage = () => {
       setImageListUrl(newImageListUrl);
     },
     beforeUpload: (file, images) => {
-      console.log(file.type);
       if (file.type !== "image/jpeg" && file.type !== "image/png") {
         message.error(`${file.name} is not a png, jpg, jpeg file`);
       }
