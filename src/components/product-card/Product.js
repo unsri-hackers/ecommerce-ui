@@ -11,7 +11,7 @@ const Product = () => {
   const { reqHeader } = useAuth();
   const { data: products, run: getProducts } = useApi(
     {
-      url: "https://deuvox-dev-1.herokuapp.com/api/v1/storefront/products/",
+      url: "https://deuvox-dev-1.herokuapp.com/api/v1/storefront/products/paging?page=0&size=100",
       method: "get",
       headers: reqHeader,
     },
@@ -36,7 +36,7 @@ const Product = () => {
         </Row>
         <Row gutter={[16, 16]}>
           {products &&
-            products.map((product) => (
+            products.result.map((product) => (
               <Col
                 key={product.id}
                 sm={{ span: 12 }}

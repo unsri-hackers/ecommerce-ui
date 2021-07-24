@@ -11,7 +11,7 @@ const ProductCard = (props) => {
         bordered={false}
         cover={
           <Image
-            alt={props.data.itemName}
+            alt={props.data.productName}
             src={
               props.data.photos.length > 0 ? props.data.photos[0].path : "error"
             }
@@ -20,7 +20,7 @@ const ProductCard = (props) => {
         }
       >
         <Meta
-          title={props.data.itemName}
+          title={props.data.productName}
           description={`Rp. ${props.data.price}`}
         />
       </Card>
